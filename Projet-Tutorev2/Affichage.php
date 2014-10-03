@@ -19,7 +19,7 @@
 							</li>
                         
 							<li style="min-height:75px;">
-								<a href="PromoSphere.php?a=SignalerProm">Signaler une promotion / un bon plan</a>
+								<a href="PromoSphere.php?a=SignalerProm">Signaler une promotion</a>
 							</li>
 				
 							<li style="min-height:75px;">
@@ -209,46 +209,106 @@
 		}
 		
 		public static function NouvelPromo(){
-			echo '<div>';
+			echo '<div class="col-lg-12">';
 			echo '<form action="NvPromo.php" method="post">
-			
+			  
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">
 				<label for="cbarre">code barre</label>
-				<input type="text" name="cbarre" value=""/>
+        </div>
+        <div class="col-lg-2">
+        <input type="text" name="cbarre" value=""/>
+        </div>
+        </div>
 				<br><br>
 				
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">
 				<label for="narticle">Nom de l\'article</label>
-				<input type="text" name="narticle" value=""/>
+        </div>
+        <div class="col-lg-2">
+        <input type="text" name="narticle" value=""/>
+        </div>
+        </div>
 				<br><br>
 				
-				<label for="prix">Prix origine</label>
-				<input type="text" name="prix" value=""/>
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">
+				<label for="prix">Prix origine</label>				
+        </div>
+        <div class="col-lg-2">
+        <input type="text" name="prix" value=""/>
+        </div>
+        </div>
 				<br><br>
-					
+				
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">
 				<label for="prixprom">Prix promotion</label>
-				<input type="text" name="prixprom" value=""/>
+        </div>
+        <div class="col-lg-1">	
+        <input type="text" name="prixprom" value=""/>
+        </div>
+        </div>
 				<br><br>
 				
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">
 				<label for="desc">Description</label>
-				<textarea name="desc" rows="5" cols="50" > Description </textarea> 
+        </div>
+        <div class="col-lg-1">
+        <textarea name="desc" rows="5" cols="50" > Description </textarea> 
+        </div>
+        </div>
 				<br>
 				
-				<label for="image">Image produit</label>
-				<input type="file" name="photo" />
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">
+				<label for="image">Image produit</label>			
+        </div>
+        <div class="col-lg-1">
+        <input type="file" name="photo" />
+        </div>
+        </div>
 				<br><br>
 				
-				<label for="taille">Taille disponible</label>
-				<input type="text" name="taille" value=""/>
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">
+				<label for="taille">Taille disponible</label>			
+        </div>
+        <div class="col-lg-1">
+        <input type="text" name="taille" value=""/>
+        </div>
+        </div>
 				<br><br>
 				
-				<label for="datedeb">Date début</label>
-				<input type="date" name="datedeb">
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">
+				<label for="datedeb">Date début</label>				
+        </div>
+        <div class="col-lg-1">
+        <input type="date" name="datedeb">
+        </div>
+        </div>
 				<br><br>
 				
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">
 				<label for="datefin">Date fin</label>
-				<input type="date" name="datefin">
+        </div>
+        <div class="col-lg-1">
+        <input type="date" name="datefin">
+        </div>
+        </div>
 				<br>
 
-				<input type="submit" value="Valider promo"/>
+        <div class="row">
+        <div class="col-lg-offset-4 col-lg-1">				
+        </div>
+        <div class="col-lg-1">
+        <input type="submit" value="Valider promo"/>
+        </div>
+        </div>
 				</form>';
 			echo '</div>';
 		}
