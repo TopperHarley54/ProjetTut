@@ -3,7 +3,6 @@
 
 	include_once 'Article.php';
 	include_once 'liste.php';
-	session_start();
 	
 	class Affichage{
 
@@ -40,7 +39,7 @@
 			if(isset($_SESSION['profil'])){
 				echo	'	<div class="col-lg-offset-1 col-lg-2">
 							Bonjour ' . $_SESSION['profil']['prenom'] .
-							'<a href="PromoSphere.php?a=Deconnexion" id="inscription">Deconnexion</div>
+							'<a href="PromoSphere.php?a=Deconnexion" id="inscription">Deconnexion</div></a>
 						</div>
                         </div>
 					</nav>';	

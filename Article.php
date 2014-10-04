@@ -49,8 +49,9 @@
 		public function insert() {
 			$b = Base::getConnection();
 			
-			$query = "INSERT INTO article(code_barre, nom_article, prix, prix_promo, description, photo, taille_dispo, couleur, datedebut,datefin, id_client) VALUES ('$this->code_barre','$this->nom_article','$this->prix','$this->prix_promo','$this->description','$this->photo','$this->taille_dispo','$this->couleur','$this->datedebut','$this->datefin','$this->id_magasin','$this->id_client')";
+			$query = "INSERT INTO article(code_barre, nom_article, prix, prix_promo, description, photo, taille_dispo, couleur, datedebut,datefin,id_client) VALUES ('$this->code_barre','$this->nom_article',$this->prix,$this->prix_promo,'$this->description','$this->photo','$this->taille_dispo','$this->couleur','$this->datedebut','$this->datefin',$this->id_client)";
 			$res = $b->query($query);
+			echo $query;
 			$lastid = $b->lastInsertId();
 			$this->id_article = $lastid;
 		}
@@ -284,7 +285,6 @@
 			$result=$req->fetch();
 			
 			return $compteur;
-		}
-		
+		}		
 	}
 ?>
