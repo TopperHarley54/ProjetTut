@@ -26,6 +26,7 @@ rotulo_title();
 
 <head>
 <link href="css/bootstrap.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Promo Sphère - Buy Them All</title>

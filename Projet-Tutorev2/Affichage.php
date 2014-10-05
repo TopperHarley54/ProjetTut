@@ -46,8 +46,8 @@
 			}else{
 				echo	'	<div class="col-lg-offset-1 col-lg-2">
               <br>
-							<a href="PromoSphere.php?a=Connexion" id="loggeur">Se connecter</a>
-							<a href="PromoSphere.php?a=Inscription" id="inscription">S\'inscrire</a>
+							<a class="col-lg-6" href="PromoSphere.php?a=Connexion" id="loggeur">Se connecter</a>
+							<a class="col-lg-6" href="PromoSphere.php?a=Inscription" id="inscription">S\'inscrire</a>
 						</div>
 					</nav>';
 			}
@@ -143,43 +143,45 @@
 		}
 		
 		public static function Afi($art){
-			echo '<div id="pageActive">'; 	 
-					echo	'<div id="item">
-								<div id="nomProduit">
+			echo '<div class="col-lg-offset-1 col-lg-10" style="border-style:dashed;">'; 	 
+					echo	'<div class="row">
+								<h2 class="col-lg-offset-2 col-lg-2">
 								Jean LeJeans
-								</div>
-								<div id="prixProduit">
-									<div id="boxPrix">
-										<div id="prixNor">Prix: <del>'. $art->prix .'</del></div>';
+								</h2>
+								<div class="row"> <!-- box affichant les informations du produit -->
+									<div class="col-lg-offset-8 col-lg-3" style="border-style:dashed;">
+                  <br>
+										<div class="row"><div class="col-lg-12">Prix: <del>'. $art->prix .'</del></div></div>';
 										
-									echo' <div id="prixRemise">Prix promo :'. $art->prix_promo .'</div>';
+									echo' <div class="row"><div class="col-lg-12">Prix promo :'. $art->prix_promo .'</div></div>';
 									
 									if(isset($_SESSION['profil'])){
 										$count = liste::countArtById($_SESSION['profil']['userid']);
 									
 										if($count['nombre']  == 0){
-											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button id="addListe">Ajouter a la liste</button></a>';
+											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
 										}else{
-											echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button id="addListe">Retirer de la liste</button></a>';
+											echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
 										}
 									}
 									
-									echo 'période promotion: '. $art->datedebut .'/'. $art->datefin;
+									echo 'période promotion: '. $art->datedebut .' au '. $art->datefin;
 										
-									echo'	<button id="inpricebox">Modifier la promotion / le bon plan</button>
-										<div id="localisation"> Ce produit est disponible à CarreJeans à 1500m</div>
-										<div id="adresse">Au 15, Rue Du Marchand, Nancy.</div>
-										<div id="suppr">
-											<div>Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button>Supprimer</button> </a></div>
+									echo'	<div class="row"><br><div class="col-lg-12"><button class="btn btn-primary">Modifier la promotion</button></div></div>
+										<div class="row"><br><div class="col-lg-12"> Ce produit est disponible à CarreJeans à 1500m</div></div>
+										<div class="row"><div class="col-lg-12">Au 15, Rue Du Marchand, Nancy.</div></div>
+										<div class="row">
+                      <br>
+											<div class="col-lg-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
 										</div>
 									</div>
 								</div>';
 						
-								echo '<div id="imageProduit">
-									<img src="data:png;base64,'.base64_encode($art->photo).'" />
+								echo '<div class="col-lg-offset-4">
+									<img class="img-circle" src="data:png;base64,'.base64_encode($art->photo).'" />
 								</div>
 								<hr />
-								<div id="descriptionProduit">'.																						
+								<div class="col-lg-offset-2 col-lg-8">'.																						
 									$art->description
 								.'</div>
 							</div>
