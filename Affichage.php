@@ -39,7 +39,7 @@
 			if(isset($_SESSION['profil'])){
 				echo	'	<div class="col-lg-offset-1 col-lg-2">
 							Bonjour ' . $_SESSION['profil']['prenom'] .
-							'<a href="PromoSphere.php?a=Deconnexion" id="inscription">Deconnexion</div></a>
+							'<a href="PromoSphere.php?a=Deconnexion" id="inscription">Deconnexion</div>
 						</div>
                         </div>
 					</nav>';	
@@ -53,8 +53,46 @@
 			}
 		}
 		
+		
 		public static function Accueil(){
-			echo 'ceci est une page d\'accueil';
+			echo '<div class="row">
+            <div class="col-lg-offset-1 col-lg-10">
+                <div class="col-lg-12" style="border-style:dashed;">        
+					<div class="row">
+						<h2 class="col-lg-offset-2 col-lg-2">
+						   Jean LeJeans
+						</h2>
+						<div class="row">
+                            
+                           
+							    <div class="col-lg-offset-8 col-lg-3" style="border-style:dashed;">
+                    <br>        
+								    <div class="row"><div class="col-lg-12">Prix: <del>55€</del></div></div>
+								    <div class="row"><div class="col-lg-12">Prix promo : 45€</div></div>
+								    <div class="row"><div class="col-lg-12"> Ce produit est disponible à CarreJeans à 1500m</div></div>
+								    <div class="row"><div class="col-lg-12">Au 15, Rue Du Marchand, Nancy.</div></div>
+                    <div class="col-lg-offset-1 col-lg-11">
+                    <br>
+								    <button class="btn btn-primary">Ajouter a la liste</button>
+								    <button class="btn btn-primary">Modifier la promotion</button>        
+                    </div>
+								    <div class="row"><div class="col-lg-12"><br><div>Ce bon plan n\'existe plus ? <button class="btn btn-primary">Supprimer</button></div></div>
+							    </div> <!-- fin de div contenant information prix et adresse produit -->
+                  <br>
+					    </div> <!-- fin div row -->
+                        <div class="col-lg-offset-4" >
+							    <img class="img-circle" src="diesel-jean-larkee-regular-homme.jpg" style="max-width:350px; max-height:350px;" />
+						</div>  <!-- fin de div contenant img -->
+					</div> <!-- fin div row -->
+					
+						
+						<hr />
+						<div class="col-lg-offset-2 col-lg-8">		<!-- Description texte -->
+							"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+						</div> <!-- fin div description -->
+					</div> <!-- fin div col-lg-12 -->               
+				</div> <!-- fin div col-lg-12 -->
+                </div> <!-- fin div row -->';
 		}
 		
 		public static function Connexion(){
@@ -97,63 +135,55 @@
 				<input type="text" name="nom" value=""/>
 
 				<label for="email">Email</label>
-				<input type="text" name="email" value=""/><br>
-				
-				<label for="particulier"> Particulier</label>
-				<input type="radio" name="choix" value="0"/>
-				
-				<label for="commerçant"> Commerçant</label>
-				<br><input type="radio" name="choix" value="1"/>';
-				 
-				
-				echo'<br><label><input type="submit" value="S\'inscrire"/></label>
+				<input type="text" name="email" value=""/>
+
+				<input type="submit" value="S\'inscrire"/>
 				</form>';
 			echo '</div>';
 		}
 		
 		public static function Afi($art){
-			echo '<div id="pageActive">'; 	 
-					echo	'<div id="item">
-								<div id="nomProduit">'.
-								$art->nom_article.'
-								</div>
-								<div id="prixProduit">
-									<div id="boxPrix">
-										<div id="prixNor">Prix: <del>'. $art->prix .'</del></div>';
+			echo '<div class="col-lg-offset-1 col-lg-10" style="border-style:dashed;">'; 	 
+					echo	'<div class="row">
+								<h2 class="col-lg-offset-2 col-lg-2">
+								Jean LeJeans
+								</h2>
+								<div class="row"> <!-- box affichant les informations du produit -->
+									<div class="col-lg-offset-8 col-lg-3" style="border-style:dashed;">
+                  <br>
+										<div class="row"><div class="col-lg-12">Prix: <del>'. $art->prix .'</del></div></div>';
 										
-									echo' <div id="prixRemise">Prix promo :'. $art->prix_promo .'</div>';
+									echo' <div class="row"><div class="col-lg-12">Prix promo :'. $art->prix_promo .'</div></div>';
 									
 									if(isset($_SESSION['profil'])){
 										$count = liste::countArtById($_SESSION['profil']['userid']);
 									
 										if($count['nombre']  == 0){
-											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button id="addListe">Ajouter a la liste</button></a>';
+											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
 										}else{
-											echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button id="addListe">Retirer de la liste</button></a>';
+											echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
 										}
 									}
+									
+									echo 'période promotion: '. $art->datedebut .' au '. $art->datefin;
 										
-									echo'	<button id="inpricebox">Modifier la promotion</button>
-										<div id="localisation"> Ce produit est disponible à CarreJeans à 1500m</div>
-										<div id="adresse">Au 15, Rue Du Marchand, Nancy.</div>
-										<div id="suppr">
-											<div>Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button>Supprimer</button> </a></div>
+									echo'	<div class="row"><br><div class="col-lg-12"><button class="btn btn-primary">Modifier la promotion</button></div></div>
+										<div class="row"><br><div class="col-lg-12"> Ce produit est disponible à CarreJeans à 1500m</div></div>
+										<div class="row"><div class="col-lg-12">Au 15, Rue Du Marchand, Nancy.</div></div>
+										<div class="row">
+                      <br>
+											<div class="col-lg-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
 										</div>
 									</div>
 								</div>';
 						
-								echo '<div id="imageProduit">
-									<img src="'.$art->photo.'" />
+								echo '<div class="col-lg-offset-4">
+									<img class="img-circle" src="data:png;base64,'.base64_encode($art->photo).'" />
 								</div>
 								<hr />
-								<div id="descriptionProduit">';	
-								echo 'En promotion du '. $art->datedebut .' au '. $art->datefin. '<br>';								
-								echo 'taille: '. $art->taille_dispo .'<br>';
-								echo 'couleur: '. $art->couleur .'<br>';
-
-								echo 'ajouté par:'. $art->id_client .' <br><br><br><br><br>';
-								echo $art->description;
-								echo '</div>
+								<div class="col-lg-offset-2 col-lg-8">'.																						
+									$art->description
+								.'</div>
 							</div>
 					</div>';
 		}
@@ -284,50 +314,6 @@
 				</form>';
 			echo '</div>';
 		}
-		
-		public static function ModifPromo($art){
-			echo '<div>';
-			echo '<form action="ModifPromo.php?idart='.$art->id_article.'" method="post">
-			
-				<label for="cbarre">code barre</label>
-				<input type="text" name="cbarre" value="'.$art->code_barre.'"/>
-				<br><br>
-				
-				<label for="narticle">Nom de l\'article</label>
-				<input type="text" name="narticle" value="'.$art->nom_article.'"/>
-				<br><br>
-				
-				<label for="prix">Prix origine</label>
-				<input type="text" name="prix" value="'.$art->prix.'"/>
-				<br><br>
-					
-				<label for="prixprom">Prix promotion</label>
-				<input type="text" name="prixprom" value="'.$art->prix_promo.'"/>
-				<br><br>
-				
-				<label for="desc">Description</label>
-				<textarea name="desc" rows="5" cols="50" >'.$art->description.' </textarea> 
-				<br>
-				
-				<label for="image">Image produit</label>
-				<input type="file" name="photo">'.$art->photo.' </> 
-				<br><br>
-				
-				<label for="taille">Taille disponible</label>
-				<input type="text" name="taille" value="'.$art->taille_dispo.'"/>
-				<br><br>
-				
-				<label for="datedeb">Date début</label>
-				<input type="date" name="datedeb"> '.$art->datedebut.' </>
-				<br><br>
-				
-				<label for="datefin">Date fin</label>
-				<input type="date" name="datefin"> '.$art->datefin.' </>
-				<br>
-
-				<input type="submit" value="Valider promo"/>
-				</form>';
-			echo '</div>';
-		}
 	}
+
 ?>
