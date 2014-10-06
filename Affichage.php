@@ -3,6 +3,8 @@
 
 	include_once 'Article.php';
 	include_once 'liste.php';
+	include_once 'Client.php';
+	include_once 'Magasin.php';
 	
 	class Affichage{
 
@@ -41,7 +43,11 @@
 			if(isset($_SESSION['profil'])){
 				echo	'	<div class="col-lg-2">
 							Bonjour ' . $_SESSION['profil']['prenom'] .
+<<<<<<< HEAD
 							'<a href="PromoSphere.php?a=Deconnexion"><p class="log">Deconnexion</p></div>
+=======
+							'<a href="PromoSphere.php?a=Deconnexion" id="inscription">Deconnexion</div></a>
+>>>>>>> origin/master
 						</div>
                         </div>
 					</nav>';	
@@ -58,6 +64,7 @@
 		
 		
 		public static function Accueil(){
+<<<<<<< HEAD
       echo ' <div class="col-lg-offset-1 col-lg-10">
       <div id="lastProd">Les derniers produits signalés...</div><br> 
             
@@ -66,6 +73,12 @@
 			Affichage::AfiAll();
       
       echo '</div>';
+=======
+			$a = new article();
+			$a = Article::findById(Article::LastInsert()->id_article);
+			Affichage::Afi($a);
+		
+>>>>>>> origin/master
 		}
 		
 		public static function Connexion(){
@@ -116,12 +129,20 @@
 		}
 		
 		public static function Afi($art){
+<<<<<<< HEAD
 			echo '<div class="col-lg-offset-1 col-lg-10" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">'; 	 
 					echo	'
           <div class="row">
 								<h2 class="col-lg-offset-2 col-lg-2">
 								Jean LeJeans
 								</h2>
+=======
+			echo '<div class="col-lg-offset-1 col-lg-10" style="border-style:dashed;">'; 	 
+					echo	'<div class="row">
+								<h2 class="col-lg-offset-2 col-lg-2">'.
+								$art->nom_article
+								.'</h2>
+>>>>>>> origin/master
 								<div class="row"> <!-- box affichant les informations du produit -->
                  <div class="col-lg-offset-4 col-lg-8">             
                   <div class="col-lg-3" >
@@ -136,15 +157,31 @@
 									
 									if(isset($_SESSION['profil'])){
 										$count = liste::countArtById($_SESSION['profil']['userid']);
-									
 										if($count['nombre']  == 0){
 											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
 										}else{
 											echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
 										}
-									}
+									}else{
+										echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
+									}									
 									
+									echo '<br>période promotion: '. $art->datedebut .' au '. $art->datefin;
+									
+<<<<<<< HEAD
 									echo 'Période promotion: '. $art->datedebut .' au '. $art->datefin;
+=======
+									if($art->id_client != null){
+										$cli = new Client();
+										$cli = Client::findById($art->id_client);
+										echo '<br> Mise en ligne par <b>'. $cli->login_client .'</b>.';
+									}
+									if($art->id_magasin != null){
+										$mag = new Magasin();
+										$mag = Magasin::findById($art->id_magasin);
+										echo '<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
+									}
+>>>>>>> origin/master
 										
 									echo'	<div class="row"><br><div class="col-lg-12"><button class="btn btn-primary">Modifier la promotion</button></div></div>
 										<div class="row"><br><div class="col-lg-12"> Ce produit est disponible à CarreJeans à 1500m</div></div>
@@ -154,6 +191,7 @@
 											<div class="col-lg-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
 										</div>
 									</div>
+<<<<<<< HEAD
 								</div>
                 </div>
                 <hr />
@@ -163,6 +201,19 @@
                   
 								.'</div>
                 <br><br>
+=======
+								</div>';
+						
+								echo '<div class="col-lg-offset-4">
+									<img src="'.$art->photo.'" />
+								</div>
+								<hr />
+								<div class="col-lg-offset-2 col-lg-8">';							
+									echo 'taille: '. $art->taille_dispo .'     /';
+									echo '     couleur: '. $art->couleur .'<br>';
+									echo $art->description;
+								echo '</div>
+>>>>>>> origin/master
 							</div>
 					</div>';
 		}
@@ -175,10 +226,14 @@
 		
 		public static function AfiLs(){
 			if(isset($_SESSION['profil'])){
+				$temp = 0;
 				foreach(Liste::findArtByIdCli($_SESSION['profil']['userid']) as $lis){
 					$a = new Article();
 					$a = Article::findById($lis->id_article);
 					Affichage::Afi($a);
+				}
+				if($temp == 0){
+					echo 'Votre liste est vide';
 				}
 				
 			}

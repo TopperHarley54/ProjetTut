@@ -86,7 +86,7 @@
 			$mag->codepostal = $tab['codepostal'];
 			$mag->description = $tab['description'];
 			$mag->tel_magasin = $tab['tel_magasin'];
-			$mag->id_magasin = $tab['$this->id_magasin'];
+			$mag->id_commercant = $tab['id_commercant'];
 			return $mag;
 		}
 		
@@ -110,7 +110,7 @@
 			$mag->codepostal = $tab['codepostal'];
 			$mag->description = $tab['description'];
 			$mag->tel_magasin = $tab['tel_magasin'];
-			$mag->id_magasin = $tab['$this->id_magasin'];
+			$mag->id_commercant = $tab['id_commercant'];
 			return $mag;
 		}
 		
@@ -134,7 +134,7 @@
 			$mag->codepostal = $tab['codepostal'];
 			$mag->description = $tab['description'];
 			$mag->tel_magasin = $tab['tel_magasin'];
-			$mag->id_magasin = $tab['$this->id_magasin'];
+			$mag->id_commercant = $tab['id_commercant'];
 			return $mag;
 		}
 		
@@ -158,7 +158,7 @@
 			$mag->codepostal = $tab['codepostal'];
 			$mag->description = $tab['description'];
 			$mag->tel_magasin = $tab['tel_magasin'];
-			$mag->id_magasin = $tab['$this->id_magasin'];
+			$mag->id_commercant = $tab['d_commercant'];
 			return $mag;
 		}
 		

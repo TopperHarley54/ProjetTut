@@ -286,5 +286,33 @@
 			
 			return $compteur;
 		}		
+		
+		public static function LastInsert(){
+			$b = Base::getConnection();
+			$query ="SELECT * FROM article a1 WHERE a1.id_article=(SELECT MAX(a2.id_article) FROM article a2)";
+			try{
+				$stmt = $b->prepare($query);
+				$a= $stmt->execute(array());
+			}catch (PDOException $e){
+				return null;
+			}
+			$res = array();
+			$tab = $stmt->fetch();
+			$art = new Article();
+			$art->id_article = $tab['id_article'];
+			$art->code_barre = $tab['code_barre'];
+			$art->nom_article = $tab['nom_article'];
+			$art->prix = $tab['prix'];
+			$art->prix_promo = $tab['prix_promo'];
+			$art->description = $tab['description'];
+			$art->photo = $tab['photo'];
+			$art->taille_dispo = $tab['taille_dispo'];
+			$art->couleur = $tab['couleur'];
+			$art->datedebut = $tab['datedebut'];
+			$art->datefin = $tab['datefin'];
+			$art->id_magasin = $tab['id_magasin'];
+			$art->id_client = $tab['id_client'];	
+			return $art;
+		}
 	}
 ?>

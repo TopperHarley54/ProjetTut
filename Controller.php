@@ -29,15 +29,27 @@ public static function callAction(){
             break;
 			
 		case("Connexion"):
-			Affichage::Connexion();
-			break;
+			if(isset($_SESSION['profil'])){
+					header('Location: PromoSphere.php?a=accueil');	
+				}else{
+					Affichage::Connexion();
+				}
+				break;
 			
 		case("Deconnexion"):
-			Affichage::Deconnexion();
+			if(isset($_SESSION['profil'])){
+				Affichage::Deconnexion();
+			}else{
+				header('Location: PromoSphere.php?a=accueil');	
+			}
 			break;
 			
 		case("Inscription"):
-			Affichage::Inscription();
+			if(isset($_SESSION['profil'])){
+				header('Location: PromoSphere.php?a=accueil');	
+			}else{
+				Affichage::Inscription();
+			}			
 			break;
             
         case("addLs"):
