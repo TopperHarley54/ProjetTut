@@ -55,44 +55,10 @@
 		
 		
 		public static function Accueil(){
-			echo '<div class="row">
-            <div class="col-lg-offset-1 col-lg-10">
-                <div class="col-lg-12" style="border-style:dashed;">        
-					<div class="row">
-						<h2 class="col-lg-offset-2 col-lg-2">
-						   Jean LeJeans
-						</h2>
-						<div class="row">
-                            
-                           
-							    <div class="col-lg-offset-8 col-lg-3" style="border-style:dashed;">
-                    <br>        
-								    <div class="row"><div class="col-lg-12">Prix: <del>55€</del></div></div>
-								    <div class="row"><div class="col-lg-12">Prix promo : 45€</div></div>
-								    <div class="row"><div class="col-lg-12"> Ce produit est disponible à CarreJeans à 1500m</div></div>
-								    <div class="row"><div class="col-lg-12">Au 15, Rue Du Marchand, Nancy.</div></div>
-                    <div class="col-lg-offset-1 col-lg-11">
-                    <br>
-								    <button class="btn btn-primary">Ajouter a la liste</button>
-								    <button class="btn btn-primary">Modifier la promotion</button>        
-                    </div>
-								    <div class="row"><div class="col-lg-12"><br><div>Ce bon plan n\'existe plus ? <button class="btn btn-primary">Supprimer</button></div></div>
-							    </div> <!-- fin de div contenant information prix et adresse produit -->
-                  <br>
-					    </div> <!-- fin div row -->
-                        <div class="col-lg-offset-4" >
-							    <img class="img-circle" src="diesel-jean-larkee-regular-homme.jpg" style="max-width:350px; max-height:350px;" />
-						</div>  <!-- fin de div contenant img -->
-					</div> <!-- fin div row -->
-					
-						
-						<hr />
-						<div class="col-lg-offset-2 col-lg-8">		<!-- Description texte -->
-							"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-						</div> <!-- fin div description -->
-					</div> <!-- fin div col-lg-12 -->               
-				</div> <!-- fin div col-lg-12 -->
-                </div> <!-- fin div row -->';
+			$a = new article();
+			$a = Article::findById(Article::LastInsert()->id_article);
+			Affichage::Afi($a);
+		
 		}
 		
 		public static function Connexion(){
@@ -157,13 +123,14 @@
 									
 									if(isset($_SESSION['profil'])){
 										$count = liste::countArtById($_SESSION['profil']['userid']);
-									
 										if($count['nombre']  == 0){
 											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
 										}else{
 											echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
 										}
-									}
+									}else{
+										echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
+									}									
 									
 									echo 'période promotion: '. $art->datedebut .' au '. $art->datefin;
 										
@@ -178,7 +145,7 @@
 								</div>';
 						
 								echo '<div class="col-lg-offset-4">
-									<img class="img-circle" src="data:png;base64,'.base64_encode($art->photo).'" />
+									<img src="'.$art->photo.'" />
 								</div>
 								<hr />
 								<div class="col-lg-offset-2 col-lg-8">'.																						
