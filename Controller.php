@@ -79,7 +79,7 @@ public static function callAction(){
 			if(isset($_SESSION['profil'])){
 				Affichage::AfiLs();
 			}else{
-				echo 'vous devez vous connecter pour accéder a votre liste';
+				echo '<p class ="col-lg-offset-2 col-lg-3" >Vous devez vous connecter pour accéder a votre liste</p>';
 			}
             break;
     }

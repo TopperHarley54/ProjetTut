@@ -9,13 +9,15 @@
 		public static function BarreNav(){
 			echo '<nav class="navbar navbar-inverse" >
 					<div class="row">
-                    <div class = "col-lg-8">
+          <div class="col-lg-offset-1 col-lg-10">
+                    <div class = "col-lg-9">
                     
 						<img id="logo" src="inQontrol_qdance.png" style="max-height:75px; max-width:75px; float:left;"/>
                         <h1 class="col-lg-3" style="color:red;">Promo Sphère</h1>
+                        <div class="col-lg-offset-1 col-lg-7">
                         <ul class="nav navbar-nav">
 				            <li class="active" style="min-height:75px;">
-								<a href="PromoSphere.php">Acceuil</a>
+								<a href="PromoSphere.php">Accueil</a>
 							</li>
                         
 							<li style="min-height:75px;">
@@ -23,76 +25,47 @@
 							</li>
 				
 							<li style="min-height:75px;">
-								<a href="PromoSphere.php?a=toutePromo">Afficher toutes les promotions et bons plans</a>
+								<a href="PromoSphere.php?a=toutePromo">Afficher toutes les promotions</a>
 							</li>
 							<li style="min-height:75px;">
 								<a href="PromoSphere.php?a=AfficherPanier">Afficher liste de shopping</a>
 							</li>
-						</ul>    
+						</ul> 
+            </div>
                         
-						
                         
 					</div>
                     
 					';
 					
 			if(isset($_SESSION['profil'])){
-				echo	'	<div class="col-lg-offset-1 col-lg-2">
+				echo	'	<div class="col-lg-2">
 							Bonjour ' . $_SESSION['profil']['prenom'] .
-							'<a href="PromoSphere.php?a=Deconnexion" id="inscription">Deconnexion</div>
+							'<a href="PromoSphere.php?a=Deconnexion"><p class="log">Deconnexion</p></div>
 						</div>
                         </div>
 					</nav>';	
 			}else{
-				echo	'	<div class="col-lg-offset-1 col-lg-2">
+				echo	'	<div class="col-lg-2">
               <br>
-							<a class="col-lg-6" href="PromoSphere.php?a=Connexion" id="loggeur">Se connecter</a>
-							<a class="col-lg-6" href="PromoSphere.php?a=Inscription" id="inscription">S\'inscrire</a>
+							<a class="col-lg-6" href="PromoSphere.php?a=Connexion"><p class="log">Se connecter</p></a>
+							<a class="col-lg-6" href="PromoSphere.php?a=Inscription"><p class="log">S\'inscrire</p></a>
 						</div>
+            </div>
 					</nav>';
 			}
 		}
 		
 		
 		public static function Accueil(){
-			echo '<div class="row">
-            <div class="col-lg-offset-1 col-lg-10">
-                <div class="col-lg-12" style="border-style:dashed;">        
-					<div class="row">
-						<h2 class="col-lg-offset-2 col-lg-2">
-						   Jean LeJeans
-						</h2>
-						<div class="row">
-                            
-                           
-							    <div class="col-lg-offset-8 col-lg-3" style="border-style:dashed;">
-                    <br>        
-								    <div class="row"><div class="col-lg-12">Prix: <del>55€</del></div></div>
-								    <div class="row"><div class="col-lg-12">Prix promo : 45€</div></div>
-								    <div class="row"><div class="col-lg-12"> Ce produit est disponible à CarreJeans à 1500m</div></div>
-								    <div class="row"><div class="col-lg-12">Au 15, Rue Du Marchand, Nancy.</div></div>
-                    <div class="col-lg-offset-1 col-lg-11">
-                    <br>
-								    <button class="btn btn-primary">Ajouter a la liste</button>
-								    <button class="btn btn-primary">Modifier la promotion</button>        
-                    </div>
-								    <div class="row"><div class="col-lg-12"><br><div>Ce bon plan n\'existe plus ? <button class="btn btn-primary">Supprimer</button></div></div>
-							    </div> <!-- fin de div contenant information prix et adresse produit -->
-                  <br>
-					    </div> <!-- fin div row -->
-                        <div class="col-lg-offset-4" >
-							    <img class="img-circle" src="diesel-jean-larkee-regular-homme.jpg" style="max-width:350px; max-height:350px;" />
-						</div>  <!-- fin de div contenant img -->
-					</div> <!-- fin div row -->
-					
-						
-						<hr />
-						<div class="col-lg-offset-2 col-lg-8">		<!-- Description texte -->
-							"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-						</div> <!-- fin div description -->
-					</div> <!-- fin div col-lg-12 -->               
-				</div> <!-- fin div col-lg-12 -->
-                </div> <!-- fin div row -->';
+      echo ' <div class="col-lg-offset-1 col-lg-10">
+      <div id="lastProd">Les derniers produits signalés...</div><br> 
+            
+      
+      ';
+			Affichage::AfiAll();
+      
+      echo '</div>';
 		}
 		
 		public static function Connexion(){
@@ -143,13 +116,19 @@
 		}
 		
 		public static function Afi($art){
-			echo '<div class="col-lg-offset-1 col-lg-10" style="border-style:dashed;">'; 	 
-					echo	'<div class="row">
+			echo '<div class="col-lg-offset-1 col-lg-10" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">'; 	 
+					echo	'
+          <div class="row">
 								<h2 class="col-lg-offset-2 col-lg-2">
 								Jean LeJeans
 								</h2>
 								<div class="row"> <!-- box affichant les informations du produit -->
-									<div class="col-lg-offset-8 col-lg-3" style="border-style:dashed;">
+                 <div class="col-lg-offset-4 col-lg-8">             
+                  <div class="col-lg-3" >
+                  <br><br>
+							        <img class="img-circle" src="data:png;base64,'.base64_encode($art->photo).'" />
+						      </div>  <!-- fin de div contenant img --> 
+									<div class="col-lg-offset-3 col-lg-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">
                   <br>
 										<div class="row"><div class="col-lg-12">Prix: <del>'. $art->prix .'</del></div></div>';
 										
@@ -165,7 +144,7 @@
 										}
 									}
 									
-									echo 'période promotion: '. $art->datedebut .' au '. $art->datefin;
+									echo 'Période promotion: '. $art->datedebut .' au '. $art->datefin;
 										
 									echo'	<div class="row"><br><div class="col-lg-12"><button class="btn btn-primary">Modifier la promotion</button></div></div>
 										<div class="row"><br><div class="col-lg-12"> Ce produit est disponible à CarreJeans à 1500m</div></div>
@@ -175,15 +154,15 @@
 											<div class="col-lg-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
 										</div>
 									</div>
-								</div>';
-						
-								echo '<div class="col-lg-offset-4">
-									<img class="img-circle" src="data:png;base64,'.base64_encode($art->photo).'" />
 								</div>
-								<hr />
+                </div>
+                <hr />
+								
 								<div class="col-lg-offset-2 col-lg-8">'.																						
 									$art->description
+                  
 								.'</div>
+                <br><br>
 							</div>
 					</div>';
 		}
