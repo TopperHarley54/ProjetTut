@@ -31,9 +31,9 @@
 		public static function charger($utilisateur) {			
 			session_start();
 			if($utilisateur->id_client != null){
-				$profil = array('userid'=>$utilisateur->id_client, 'login'=>$utilisateur->login_client, 'prenom'=>$utilisateur->prenom_client);
+				$profil = array('userid'=>$utilisateur->id_client, 'login'=>$utilisateur->login_client, 'prenom'=>$utilisateur->prenom_client, 'cli'=>'true');
 			}else{
-				$profil = array('userid'=>$utilisateur->id_com, 'login'=>$utilisateur->login_com, 'prenom'=>$utilisateur->prenom_com);
+				$profil = array('userid'=>$utilisateur->id_com, 'login'=>$utilisateur->login_com, 'prenom'=>$utilisateur->prenom_com, 'com'=>'true');
 			}
 			
 			$profil = array('userid'=>$utilisateur->id_client, 'login'=>$utilisateur->login_client, 'prenom'=>$utilisateur->prenom_client);
