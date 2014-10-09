@@ -153,26 +153,28 @@
 										echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
 									}			
 									
-
+									$mag = new Magasin();
+									$mag = Magasin::findById($art->id_magasin);
+									
 									if($art->id_client != null){
 										$cli = new Client();
 										$cli = Client::findById($art->id_client);
 										echo '<br> Mise en ligne par <b>'. $cli->login_client .'</b>.';
 									}else{
 										if($art->id_magasin != null){
-											$mag = new Magasin();
-											$mag = Magasin::findById($art->id_magasin);
 											echo '<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
 										}
 									}
                                   
 									echo'	<div class="row"><br><div class="col-lg-12"><button class="btn btn-primary">Modifier la promotion</button></div></div>
                                       <br>Période promotion: '. $art->datedebut .' au '. $art->datefin.'
-										<div class="row"><br><div class="col-lg-12"> Ce produit est disponible à CarreJeans à 1500m</div></div>
-										<div class="row"><div class="col-lg-12">Au 15, Rue Du Marchand, Nancy.</div></div>
+										<div class="row"><br><div class="col-lg-12"> Ce produit est disponible à '. $mag->nom_magasin .'</div></div>
+										<div class="row"><div class="col-lg-12">Au '. $mag->numero .', '. $mag->rue .', '. $mag->ville .'</div></div>
 										<div class="row">
-                      <br>
-											<div class="col-lg-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
+                      <br>';
+									
+									
+									echo	'<div class="col-lg-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
 										</div>
 									</div></div>
                                    
