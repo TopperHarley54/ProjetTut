@@ -50,7 +50,7 @@
 		echo $a->id_article;
 		$a->id_client = 1;
 		$a->insert();
-		header('Location: PromoSphere.php?a=toutePromo');	
+		//header('Location: PromoSphere.php?a=toutePromo');	
 	
 
 ?>

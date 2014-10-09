@@ -1,4 +1,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<script>
+	function verif_INF(champ_prix, champ_promo) {
+		champ_prix = document.getElementsByName("champ_prix");
+		champ_promo = document.getElementByName("champ_promo");
+		
+		var valeur_prix = champ_prix.value;
+		var valeur_promo = champ_promo.value;
+		
+		if(valeur_prix <= valeur_promo){
+			alert("Le prix de promotion de l'article doit être inférieur au prix initial");
+		}
+		
+	}
+</script>
 <?php
 
 	include_once 'Article.php';
@@ -223,6 +238,7 @@
 				liste::ajoute($idart,$_SESSION['profil']['userid']);
 		}
 		
+		
 		public static function NouvelPromo(){
 			echo '<div class="col-lg-12">';
 			echo '<form action="NvPromo.php" method="post">
@@ -322,7 +338,7 @@
         <div class="col-lg-offset-4 col-lg-1">				
         </div>
         <div class="col-lg-1">
-        <input type="submit" value="Valider promo" class="btn btn-primary"/>
+        <input type="submit" onclick="verif_INF(prix,prixprom)" value="Valider promo" class="btn btn-primary"/>
         </div>
         </div>
 				</form>';
