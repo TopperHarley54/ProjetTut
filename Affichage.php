@@ -158,11 +158,12 @@
 										$cli = new Client();
 										$cli = Client::findById($art->id_client);
 										echo '<br> Mise en ligne par <b>'. $cli->login_client .'</b>.';
-									}
-									if($art->id_magasin != null){
-										$mag = new Magasin();
-										$mag = Magasin::findById($art->id_magasin);
-										echo '<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
+									}else{
+										if($art->id_magasin != null){
+											$mag = new Magasin();
+											$mag = Magasin::findById($art->id_magasin);
+											echo '<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
+										}
 									}
                                   
 									echo'	<div class="row"><br><div class="col-lg-12"><button class="btn btn-primary">Modifier la promotion</button></div></div>
