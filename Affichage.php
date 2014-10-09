@@ -44,7 +44,7 @@
 				echo	'	<div class="col-lg-2">
 							Bonjour ' . $_SESSION['profil']['prenom'] .
 
-							'<a href="PromoSphere.php?a=Deconnexion"><p class="log">Deconnexion</p></div>
+							'<a href="PromoSphere.php?a=Deconnexion"><p class="log">Deconnexion</p></div></a>
 
 						</div>
                         </div>
@@ -134,7 +134,6 @@
                  <div class="col-lg-offset-4 col-lg-8">             
                   <div class="col-lg-3" >
                   <br><br>
-							       <!-- <img class="img-circle" src="data:jpg;base64,'.base64_encode($art->photo).'" /> -->
                                     <img class="img-circle" src="image/1.jpg" />
 						      </div>  <!-- fin de div contenant img --> 
 									<div class="col-lg-offset-3 col-lg-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;"><div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
@@ -164,6 +163,7 @@
 									if($art->id_magasin != null){
 										$mag = new Magasin();
 										$mag = Magasin::findById($art->id_magasin);
+										echo $mag->id_magasin;
 										echo '<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
 									}
                                   
