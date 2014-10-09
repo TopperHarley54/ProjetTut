@@ -23,7 +23,6 @@ rotulo_title();
 // -->
 </script>
 
-
 <head>
 <link href="css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
@@ -32,35 +31,10 @@ rotulo_title();
 </head>
 <body>
 </body>
-<script type="text/javascript" src="js/bootstrap.js></script>
-		<script type="text/javascript">
-			var slider = {
-					positionIni: 0,
-					currentPos: 0,
-					tailleNavBar: 170,
-					_initialize: function () {
-						positionIni = 0;
-						tailleNa
-						this.listeners();
-						return this;
-					},
-					listeners: function () {
-						var me = this;
-						$(#caseSli).click(me.move);
-					},
-					move: function () {
-						var me = sliderInstance;
-						if (me.currentPos == 0) {
-							$('#navbar').animate({ 'margin-left': -(me.tailleNavBar) }, 1000);
-							me.currentPos = 1;
-						} else {
-							$('#navbar').animate({ 'margin-left': 0 }, 1000);
-							me.currentPos = 0;
-						}
-					}
-			}
-			var sliderInstance = slider._initialize();
-		</script>
+
+<script src="/bootstrap/js/bootstrap-collapse.js"></script>
+<script src="/bootstrap/js/bootstrap-transition.js"></script>
+		
 </html>
 
 

@@ -23,8 +23,13 @@
 	
 	class Affichage{
 
-		public static function BarreNav(){
-			echo '<nav class="navbar navbar-inverse" >
+		public static function BarreNav(){         
+			echo '<script>var $(".ul li").on("click", function(){
+   $(".nav").find(".active").removeClass("active");
+   $(this).parent().addClass("active");
+});</script>
+            
+            <nav class="navbar navbar-inverse" role="navigation" >
 					<div class="row">
           <div class="col-lg-offset-1 col-lg-10">
                     <div class = "col-lg-9">
@@ -137,7 +142,7 @@
 		}
 		
 		public static function Afi($art){
-
+            echo'<br><hr /><br>';
 								
 
 			echo '<div class="col-lg-offset-1 col-lg-10" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">'; 	 
@@ -210,6 +215,7 @@
 							</div>
 							</div>
 					</div>';
+                    
 		}
 		
 		public static function AfiAll(){				  
@@ -225,6 +231,7 @@
 					$a = new Article();
 					$a = Article::findById($lis->id_article);
 					Affichage::Afi($a);
+                    echo'<div><hr /><br></div>';
 				}
 				if($temp == 0){
 					echo 'Votre liste est vide';
