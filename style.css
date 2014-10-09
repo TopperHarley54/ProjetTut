@@ -4,12 +4,34 @@
     
 }
 
+.descr-box{
+    font-family:'Trebuchet MS';
+    font-size:16px;
+    text-shadow:0px 0px 1px black;
+    
+}
+
 .log {
     text-shadow:0px 0px 8px #428bca;
 }
 
 a{ max-width:178px;
-   min-height:75px;
+   
+}
+
+ul{
+    margin-top:10px;
+   box-shadow:0px 0px 3px black;
+   border-style:solid;
+   border-radius:4px;
+   border-width:2px;
+   border-color:black,
+}
+
+li{
+    max-height:100%;
+    height:auto;
+
 }
 
 h1 {
@@ -18,7 +40,8 @@ h1 {
 
 h2 {
     font-style:italic;
-    text-shadow: 1px 1px 1px black;
+    text-shadow: 1px 1px 1px white;
+    font-weight:bolder;
 }
 
 .box{
@@ -34,14 +57,20 @@ h2 {
 #lastProd {
     font-style:italic;
     font-weight:bolder;
+    font-size:18px;
+    text-decoration:underline;
 }
 
 body {
-    background: #9E9E9E;
+    background: url(image/fond2.jpg);
        
     height:100%;
     margin:0;
     
+}
+
+.bigbox{
+   
 }
 
 h1.col-lg-3 {

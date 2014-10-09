@@ -16,21 +16,21 @@
                     
 						<img id="logo" src="inQontrol_qdance.png" style="max-height:75px; max-width:75px; float:left;"/>
                         <h1 class="col-lg-3" style="color:red;">Promo Sphère</h1>
-                        <div class="col-lg-offset-1 col-lg-7">
+                        <div class="col-lg-offset-1 col-lg-7" style="margin-top:1%">
                         <ul class="nav navbar-nav">
-				            <li class="active" style="min-height:75px;">
+				            <li class="active" >
 								<a href="PromoSphere.php">Accueil</a>
 							</li>
                         
-							<li style="min-height:75px;">
+							<li >
 								<a href="PromoSphere.php?a=SignalerProm">Signaler une promotion</a>
 							</li>
 				
-							<li style="min-height:75px;">
-								<a href="PromoSphere.php?a=toutePromo">Afficher toutes les promotions</a>
+							<li >
+								<a href="PromoSphere.php?a=toutePromo">Les promotions</a>
 							</li>
-							<li style="min-height:75px;">
-								<a href="PromoSphere.php?a=AfficherPanier">Afficher liste de shopping</a>
+							<li >
+								<a href="PromoSphere.php?a=AfficherPanier">Liste de shopping</a>
 							</li>
 						</ul> 
             </div>
@@ -126,37 +126,35 @@
 								
 
 			echo '<div class="col-lg-offset-1 col-lg-10" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">'; 	 
-					echo	'<div class="row">
-								<h2 class="col-lg-offset-2 col-lg-2">
-								$art->nom_article
-                </h2>
+					echo	'<div class="row" style="background:#F0EAE7;"><div class="bigbox">
+								<h2 class="col-lg-offset-2 col-lg-2">';
+								echo $art->nom_article;
+               echo '</h2>
 								<div class="row"> <!-- box affichant les informations du produit -->
                  <div class="col-lg-offset-4 col-lg-8">             
                   <div class="col-lg-3" >
                   <br><br>
-							        <img class="img-circle" src="data:png;base64,'.base64_encode($art->photo).'" />
+							       <!-- <img class="img-circle" src="data:jpg;base64,'.base64_encode($art->photo).'" /> -->
+                                    <img class="img-circle" src="image/1.jpg" />
 						      </div>  <!-- fin de div contenant img --> 
-									<div class="col-lg-offset-3 col-lg-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">
+									<div class="col-lg-offset-3 col-lg-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;"><div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
                   <br>
 										<div class="row"><div class="col-lg-12">Prix: <del>'. $art->prix .'</del></div></div>';
 										
-									echo' <div class="row"><div class="col-lg-12">Prix promo :'. $art->prix_promo .'</div></div>';
+									echo' <div class="row"><div class="col-lg-12">Prix promo :'. $art->prix_promo .'</div></div><br>';
 									
 									if(isset($_SESSION['profil'])){
 										$count = liste::countArtById($_SESSION['profil']['userid']);
 										if($count['nombre']  == 0){
-											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
+											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
 										}else{
 											echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
 										}
 									}else{
 										echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
 									}									
+	
 									
-									echo '<br>période promotion: '. $art->datedebut .' au '. $art->datefin;
-									
-
-									echo 'Période promotion: '. $art->datedebut .' au '. $art->datefin;
 
 									if($art->id_client != null){
 										$cli = new Client();
@@ -168,28 +166,32 @@
 										$mag = Magasin::findById($art->id_magasin);
 										echo '<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
 									}
-
+                                  
 									echo'	<div class="row"><br><div class="col-lg-12"><button class="btn btn-primary">Modifier la promotion</button></div></div>
+                                      <br>Période promotion: '. $art->datedebut .' au '. $art->datefin.'
 										<div class="row"><br><div class="col-lg-12"> Ce produit est disponible à CarreJeans à 1500m</div></div>
 										<div class="row"><div class="col-lg-12">Au 15, Rue Du Marchand, Nancy.</div></div>
 										<div class="row">
                       <br>
 											<div class="col-lg-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
 										</div>
-									</div>
+									</div></div>
+                                   
 
 								</div>
                 </div>
                 <hr />
 								
-								<div class="col-lg-offset-2 col-lg-8">'.																						
-									$art->description;
-                  echo 'taille: '. $art->taille_dispo .'     /';
-									echo '     couleur: '. $art->couleur .'<br>';
+								<div class="col-lg-offset-2 col-lg-8"><div class="descr-box">
+                                Description : '.																						
+									$art->description.' <br>';
+                  echo 'Taille(s): '. $art->taille_dispo .'     <br>';
+									echo '     Couleur: '. $art->couleur .'<br><br>';
                   
-								echo'</div>
+								echo'</div></div>
                 <br><br>
  
+							</div>
 							</div>
 					</div>';
 		}
@@ -225,6 +227,7 @@
 			echo '<form action="NvPromo.php" method="post">
 			  
         <div class="row">
+        <div class="col-lg-offset-4 col-lg-2"><div id="lastProd">Ajouter un bon plan :</div></div><br><br><br>
         <div class="col-lg-offset-4 col-lg-1">
 				<label for="cbarre">code barre</label>
         </div>
@@ -318,7 +321,7 @@
         <div class="col-lg-offset-4 col-lg-1">				
         </div>
         <div class="col-lg-1">
-        <input type="submit" value="Valider promo"/>
+        <input type="submit" value="Valider promo" class="btn btn-primary"/>
         </div>
         </div>
 				</form>';

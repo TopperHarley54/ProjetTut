@@ -12,7 +12,7 @@ $c->callAction( $_GET );
 
 <script language="JavaScript">
 <!--
-    var txt = "Promo Sphère - Buy Them All  -  ";
+    var txt = "Promo Sphère - Spot Them All  -  ";
 var espera=200;
 var refresco=null;
 function rotulo_title() {
