@@ -86,7 +86,6 @@
 			$mag->codepostal = $tab['codepostal'];
 			$mag->description = $tab['description'];
 			$mag->tel_magasin = $tab['tel_magasin'];
-			$mag->id_commercant = $tab['id_commercant'];
 			return $mag;
 		}
 		

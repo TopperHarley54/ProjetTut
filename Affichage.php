@@ -151,8 +151,7 @@
 										}
 									}else{
 										echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
-									}									
-	
+									}			
 									
 
 									if($art->id_client != null){
@@ -163,7 +162,6 @@
 									if($art->id_magasin != null){
 										$mag = new Magasin();
 										$mag = Magasin::findById($art->id_magasin);
-										echo $mag->id_magasin;
 										echo '<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
 									}
                                   
