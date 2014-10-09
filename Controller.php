@@ -94,6 +94,10 @@ public static function callAction(){
 				echo '<p class ="col-lg-offset-2 col-lg-3" >Vous devez vous connecter pour accéder a votre liste</p>';
 			}
             break;
+			
+		case("Ajoutmag"):
+            Affichage::Ajoutmag();
+            break;
     }
 
 

@@ -48,9 +48,9 @@
 			$a->datefin = $_POST['datefin'];
 		}
 		echo $a->id_article;
-		$a->id_client = 1;
+		$a->id_client = $_SESSION['profil']['userid'];
 		$a->insert();
-		//header('Location: PromoSphere.php?a=toutePromo');	
+		header('Location: PromoSphere.php?a=toutePromo');	
 	
 
 ?>

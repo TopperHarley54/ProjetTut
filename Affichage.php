@@ -51,14 +51,17 @@
 							</li>
 							<li >
 								<a href="PromoSphere.php?a=AfficherPanier">Liste de shopping</a>
-							</li>
-						</ul> 
+							</li>';
+						if(isset($_SESSION['profil']['com'])){
+			echo'			<li >
+								<a href="PromoSphere.php?a=Ajoutmag">Ajouter magasin</a>
+							</li>';
+						}
+			echo'			</ul> 
             </div>
                         
                         
-					</div>
-                    
-					';
+					</div>';
 					
 			if(isset($_SESSION['profil'])){
 				echo	'	<div class="col-lg-2">
@@ -154,7 +157,7 @@
                  <div class="col-lg-offset-4 col-lg-8">             
                   <div class="col-lg-3" >
                   <br><br>
-                                    <img class="img-circle" src="image/1.jpg" />
+                                    <img class="img-circle" src="'. $art->photo .'" />
 						      </div>  <!-- fin de div contenant img --> 
 									<div class="col-lg-offset-3 col-lg-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;"><div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
                   <br>
@@ -395,6 +398,91 @@
 				<input type="submit" value="Valider promo"/>
 				</form>';
 			echo '</div>';
+		}
+		
+		public static function Ajoutmag(){
+			echo '<div class="col-lg-12">';
+			echo'	<form method="post" action="Nvmag.php">
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="nom">Nom magasin</label>
+								</div>
+								<div class="col-lg-1">
+									<input type="text" name="nom" id="nom" /><br />
+								</div>
+							</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="num">Numero</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="number" name="num" id="num" /><br />
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="rue">Rue</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="text" name="rue" id="rue" /><br />
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="ville">Ville</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="text" name="ville id=ville" /><br />
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="cd">Code postal</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="text" name="cd" id="cd" /><br />
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="desc">Description</label>
+							</div>
+							<div class="col-lg-1">
+								<textarea name="desc" rows="5" cols="50" > Description </textarea> 
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="tel">Tel</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="number" name="tel" id="tel" /><br />
+							</div>
+						</div>
+						<br>
+			
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">	
+								<input type="submit" value="Valider"/>
+							</div>
+							<div class="col-lg-1">
+							</div>
+						</div>
+						<br>
+					</form>';
 		}
 	}
 
