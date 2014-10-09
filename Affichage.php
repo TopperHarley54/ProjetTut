@@ -166,7 +166,7 @@
 										}
 									}
                                   
-									echo'	<div class="row"><br><div class="col-lg-12"><button class="btn btn-primary">Modifier la promotion</button></div></div>
+									echo'	<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'><div class="row"><br><div class="col-lg-12"><button class="btn btn-primary">Modifier la promotion</button></div></div></a>
                                       <br>Période promotion: '. $art->datedebut .' au '. $art->datefin.'
 										<div class="row"><br><div class="col-lg-12"> Ce produit est disponible à '. $mag->nom_magasin .'</div></div>
 										<div class="row"><div class="col-lg-12">Au '. $mag->numero .', '. $mag->rue .', '. $mag->ville .'</div></div>
@@ -325,6 +325,51 @@
         <input type="submit" value="Valider promo" class="btn btn-primary"/>
         </div>
         </div>
+				</form>';
+			echo '</div>';
+		}
+		
+		public static function ModifPromo($art){
+			echo '<div>';
+			echo '<form action="ModifPromo.php?idart='.$art->id_article.'" method="post">
+			
+				<label for="cbarre">code barre</label>
+				<input type="text" name="cbarre" value="'.$art->code_barre.'"/>
+				<br><br>
+				
+				<label for="narticle">Nom de l\'article</label>
+				<input type="text" name="narticle" value="'.$art->nom_article.'"/>
+				<br><br>
+				
+				<label for="prix">Prix origine</label>
+				<input type="text" name="prix" value="'.$art->prix.'"/>
+				<br><br>
+					
+				<label for="prixprom">Prix promotion</label>
+				<input type="text" name="prixprom" value="'.$art->prix_promo.'"/>
+				<br><br>
+				
+				<label for="desc">Description</label>
+				<textarea name="desc" rows="5" cols="50" >'.$art->description.' </textarea> 
+				<br>
+				
+				<label for="image">Image produit</label>
+				<input type="file" name="photo">'.$art->photo.' </> 
+				<br><br>
+				
+				<label for="taille">Taille disponible</label>
+				<input type="text" name="taille" value="'.$art->taille_dispo.'"/>
+				<br><br>
+				
+				<label for="datedeb">Date début</label>
+				<input type="date" name="datedeb"> '.$art->datedebut.' </>
+				<br><br>
+				
+				<label for="datefin">Date fin</label>
+				<input type="date" name="datefin"> '.$art->datefin.' </>
+				<br>
+
+				<input type="submit" value="Valider promo"/>
 				</form>';
 			echo '</div>';
 		}
