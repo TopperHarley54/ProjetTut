@@ -150,7 +150,7 @@
                         <div class="bigbox">
 					        <h2 class="col-lg-offset-2 col-lg-2">';
 								echo $art->nom_article;
-<<<<<<< HEAD
+
                       echo '</h2>
 							<div class="row"> <!-- box affichant les informations du produit -->
                                 <div class="col-lg-offset-4 col-lg-8">             
@@ -169,32 +169,7 @@
                                                 <div class="col-lg-12">Prix promo :'. $art->prix_promo .'
                                                 </div>
                                             </div><br>';
-=======
-               echo '</h2>
-								<div class="row"> <!-- box affichant les informations du produit -->
-                 <div class="col-lg-offset-4 col-lg-8">             
-                  <div class="col-lg-3" >
-                  <br><br>
-                                    <img class="img-circle" src="'. $art->photo .'" />
-						      </div>  <!-- fin de div contenant img --> 
-									<div class="col-lg-offset-3 col-lg-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;"><div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
-                  <br>
-										<div class="row"><div class="col-lg-12">Prix: <del>'. $art->prix .'</del></div></div>';
-										
-									echo' <div class="row"><div class="col-lg-12">Prix promo :'. $art->prix_promo .'</div></div><br>';
-									
-									if(isset($_SESSION['profil'])){
-										$count = liste::countArtById($_SESSION['profil']['userid']);
-										if($count['nombre']  == 0){
-											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
-										}else{
-											echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
-										}
-									}else{
-										echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
-									}			
->>>>>>> origin/master
-									
+												
 									        if(isset($_SESSION['profil'])){
 										        $count = liste::countArtById($_SESSION['profil']['userid']);
 										        if($count['nombre']  == 0){
