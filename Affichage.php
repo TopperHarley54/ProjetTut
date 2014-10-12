@@ -275,7 +275,7 @@
                     
 				}
 				if($temp == 0){
-					echo 'Votre liste est vide';
+					echo '<div class="col-lg-offset-4 col-lg-6">Votre liste est vide</div>';
 				}
 				
 			}
