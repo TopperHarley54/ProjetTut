@@ -142,9 +142,6 @@
 		}
 		
 		public static function Afi($art){
-            echo'<br><hr /><br>';
-								
-
 			echo '<div class="col-lg-offset-1 col-lg-10" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">	 
 			    	<div class="row" style="background:#F0EAE7;">
                         <div class="bigbox">
@@ -228,10 +225,14 @@
 	              </div>';
 		}
 		
-		public static function AfiAll(){				  
+		public static function AfiAll(){
+            echo'<div class="row">
+                    <div class="col-lg-offset-1 col-lg-10">';
 				foreach (Article::findAll() as $art) {
 					Affichage::Afi($art);
+                    echo'<div class="row"><div class="col-lg-offset-1 col-lg-10"><hr / style="visibility:hidden;"></div></div>';
 				}
+            echo'</div></div>';    
 		}
 		
 		public static function AfiLs(){
@@ -241,7 +242,7 @@
 					$a = new Article();
 					$a = Article::findById($lis->id_article);
 					Affichage::Afi($a);
-                    echo'<div><hr /><br></div>';
+                    
 				}
 				if($temp == 0){
 					echo 'Votre liste est vide';

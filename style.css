@@ -63,7 +63,7 @@ h2 {
 
 body {
     background: url(image/fond2.jpg);
-       
+    background-attachment:fixed;   
     height:100%;
     margin:0;
     
