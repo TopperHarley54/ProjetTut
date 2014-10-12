@@ -106,14 +106,24 @@
 			
 			echo '<div>';
 				echo '<form action="Connexion.php" method="post">
+                    <div class="row">
+                        <br><br><br>
+                        <div class="col-lg-offset-4 col-lg-4">
+                            <div class="col-lg-offset-2 col-lg-8">
+					            <div class="col-lg-4">
+                                    <label for="Login">Login</label>
+                                </div>
+					            <input type="text" name="login" value=""/><br><br>
 
-					<label for="Login">Login</label>
-					<input type="text" name="login" value=""/>
+                                <div class="col-lg-4">
+					                <label for="mdp">Mot de passe</label>
+                                </div>    
+					            <input type="password" name="mdp" value=""/><br><br>
 
-					<label for="mdp">Mot de passe</label>
-					<input type="password" name="mdp" value=""/>
-
-					<input type="submit" value="Se connecter"/>
+					            <div class="col-lg-offset-4"><input type="submit" value="Se connecter"/ class="btn btn-primary"></div>
+                            </div>    
+                        </div>
+                    </div>
 					</form>';			
 			echo '</div>';
 		}
@@ -126,27 +136,39 @@
 		}
 		
 		public static function Inscription(){
-			echo '<div>';
-			echo '<form action="Inscription.php" method="post">
+			echo '<div class="row"><br><br><br>
+                    <div class="col-lg-offset-4 col-lg-4"><div class="col-lg-offset-2 col-lg-8">
+			        <form action="Inscription.php" method="post">
 			
-				<label for="Login">Login</label>
-				<input type="text" name="login" value=""/>
+                    <div class="col-lg-4">
+				        <label for="Login">Login</label>
+                    </div>
+				    <input type="text" name="login" value=""/><br><br>
 				
-				<label for="mdp">Mot de passe</label>
-				<input type="password" name="mdp" value=""/>
+                    <div class="col-lg-4">
+				        <label for="mdp">Mot de passe</label>
+                    </div>
+				    <input type="password" name="mdp" value=""/><br><br>
 				
-				<label for="prenom">Prenom</label>
-				<input type="text" name="prenom" value=""/>
+                    <div class="col-lg-4">
+				        <label for="prenom">Prenom</label>
+                    </div>
+				    <input type="text" name="prenom" value=""/><br><br>
 					
-				<label for="nom">Nom</label>
-				<input type="text" name="nom" value=""/>
+                    <div class="col-lg-4">
+				        <label for="nom">Nom</label>
+                    </div>
+				    <input type="text" name="nom" value=""/><br><br>
 
-				<label for="email">Email</label>
-				<input type="text" name="email" value=""/>
+                    <div class="col-lg-4">
+				        <label for="email">Email</label>
+                    </div>
+				    <input type="text" name="email" value=""/><br><br>
 
-				<input type="submit" value="S\'inscrire"/>
-				</form>';
-			echo '</div>';
+				    <div class="col-lg-offset-4"><input type="submit" value="S\'inscrire"/ class="btn btn-primary"></div>
+				    </form>
+                    </div></div>
+			    </div>';
 		}
 		
 		public static function Afi($art){
