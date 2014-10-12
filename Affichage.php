@@ -208,32 +208,24 @@
                                                     <div class="col-lg-12">Au '. $mag->numero .', '. $mag->rue .', '. $mag->ville .'
                                                     </div>
                                                  </div>
-										<div class="row">
-                      <br>';
-									
-									
-									echo	'<div class="col-lg-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
-										</div>
-									</div></div>
-                                   
-
-								</div>
-                </div>
-                <hr />
-								
-								<div class="col-lg-offset-2 col-lg-8"><div class="descr-box">
-                                Description : '.																						
-									$art->description.' <br>';
-                  echo 'Taille(s): '. $art->taille_dispo .'     <br>';
-									echo '     Couleur: '. $art->couleur .'<br><br>';
-                  
-								echo'</div></div>
-                <br><br>
- 
-							</div>
-							</div>
-					</div>';
-                    
+									   	         <div class="row"><br>';
+							                     echo'<div class="col-lg-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
+										              </div>
+									             </div>
+                                            </div>
+								       </div>
+                                  </div>
+                                  <hr />
+		     			          <div class="col-lg-offset-2 col-lg-8">
+                                      <div class="descr-box">Description : '.																						
+									      $art->description.' <br>';
+                                          echo 'Taille(s): '. $art->taille_dispo .'<br>';
+									      echo 'Couleur: '. $art->couleur .'<br><br>
+								      </div>
+                                 </div><br><br>
+					        </div>
+	                   </div>
+	              </div>';
 		}
 		
 		public static function AfiAll(){				  
