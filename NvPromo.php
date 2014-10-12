@@ -1,4 +1,5 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
 <?php
 
 	include_once "Article.php";
@@ -11,12 +12,15 @@
 		if(isset($_POST['narticle'])){
 			$a->nom_article = $_POST['narticle'];
 		}
+		
 		if(isset($_POST['prix'])){
 			$a->prix = $_POST['prix'];
 		}
 		if(isset($_POST['prixprom'])){
 			$a->prix_promo = $_POST['prixprom'];
 		}
+	
+		
 		if(isset($_POST['desc'])){
 			$a->description = $_POST['desc'];
 		}
@@ -48,9 +52,9 @@
 			$a->datefin = $_POST['datefin'];
 		}
 		echo $a->id_article;
-		$a->id_client = 1;
+		$a->id_client = $_SESSION['profil']['userid'];
 		$a->insert();
-		//header('Location: PromoSphere.php?a=toutePromo');	
+		header('Location: PromoSphere.php?a=toutePromo');	
 	
 
 ?>

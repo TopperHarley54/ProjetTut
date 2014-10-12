@@ -1,19 +1,4 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-<script>
-	function verif_INF(champ_prix, champ_promo) {
-		champ_prix = document.getElementsByName("champ_prix");
-		champ_promo = document.getElementByName("champ_promo");
-		
-		var valeur_prix = champ_prix.value;
-		var valeur_promo = champ_promo.value;
-		
-		if(valeur_prix <= valeur_promo){
-			alert("Le prix de promotion de l'article doit être inférieur au prix initial");
-		}
-		
-	}
-</script>
 <?php
 
 	include_once 'Article.php';
@@ -51,14 +36,17 @@
 							</li>
 							<li >
 								<a href="PromoSphere.php?a=AfficherPanier">Liste de shopping</a>
-							</li>
-						</ul> 
+							</li>';
+						if(isset($_SESSION['profil']['com'])){
+			echo'			<li >
+								<a href="PromoSphere.php?a=Ajoutmag">Ajouter magasin</a>
+							</li>';
+						}
+			echo'			</ul> 
             </div>
                         
                         
-					</div>
-                    
-					';
+					</div>';
 					
 			if(isset($_SESSION['profil'])){
 				echo	'	<div class="col-lg-2">
@@ -147,6 +135,7 @@
                         <div class="bigbox">
 					        <h2 class="col-lg-offset-2 col-lg-2">';
 								echo $art->nom_article;
+<<<<<<< HEAD
                       echo '</h2>
 							<div class="row"> <!-- box affichant les informations du produit -->
                                 <div class="col-lg-offset-4 col-lg-8">             
@@ -165,6 +154,31 @@
                                                 <div class="col-lg-12">Prix promo :'. $art->prix_promo .'
                                                 </div>
                                             </div><br>';
+=======
+               echo '</h2>
+								<div class="row"> <!-- box affichant les informations du produit -->
+                 <div class="col-lg-offset-4 col-lg-8">             
+                  <div class="col-lg-3" >
+                  <br><br>
+                                    <img class="img-circle" src="'. $art->photo .'" />
+						      </div>  <!-- fin de div contenant img --> 
+									<div class="col-lg-offset-3 col-lg-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;"><div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
+                  <br>
+										<div class="row"><div class="col-lg-12">Prix: <del>'. $art->prix .'</del></div></div>';
+										
+									echo' <div class="row"><div class="col-lg-12">Prix promo :'. $art->prix_promo .'</div></div><br>';
+									
+									if(isset($_SESSION['profil'])){
+										$count = liste::countArtById($_SESSION['profil']['userid']);
+										if($count['nombre']  == 0){
+											echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
+										}else{
+											echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
+										}
+									}else{
+										echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
+									}			
+>>>>>>> origin/master
 									
 									        if(isset($_SESSION['profil'])){
 										        $count = liste::countArtById($_SESSION['profil']['userid']);
@@ -302,7 +316,8 @@
         <div class="col-lg-1">	
         <input type="text" name="prixprom" value=""/>
         </div>
-        </div>
+        </div> 
+		
 				<br><br>
 				
         <div class="row">
@@ -359,7 +374,7 @@
         <div class="col-lg-offset-4 col-lg-1">				
         </div>
         <div class="col-lg-1">
-        <input type="submit" onclick="verif_INF(prix,prixprom)" value="Valider promo" class="btn btn-primary"/>
+        <input type="submit" value="Valider promo" class="btn btn-primary"/>
         </div>
         </div>
 				</form>';
@@ -409,6 +424,91 @@
 				<input type="submit" value="Valider promo"/>
 				</form>';
 			echo '</div>';
+		}
+		
+		public static function Ajoutmag(){
+			echo '<div class="col-lg-12">';
+			echo'	<form method="post" action="Nvmag.php">
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="nom">Nom magasin</label>
+								</div>
+								<div class="col-lg-1">
+									<input type="text" name="nom" id="nom" /><br />
+								</div>
+							</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="num">Numero</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="number" name="num" id="num" /><br />
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="rue">Rue</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="text" name="rue" id="rue" /><br />
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="ville">Ville</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="text" name="ville id=ville" /><br />
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="cd">Code postal</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="text" name="cd" id="cd" /><br />
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="desc">Description</label>
+							</div>
+							<div class="col-lg-1">
+								<textarea name="desc" rows="5" cols="50" > Description </textarea> 
+							</div>
+						</div>
+						<br>
+						
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">
+								<label for="tel">Tel</label>
+							</div>
+							<div class="col-lg-1">
+								<input type="number" name="tel" id="tel" /><br />
+							</div>
+						</div>
+						<br>
+			
+						<div class="row">
+							<div class="col-lg-offset-4 col-lg-1">	
+								<input type="submit" value="Valider"/>
+							</div>
+							<div class="col-lg-1">
+							</div>
+						</div>
+						<br>
+					</form>';
 		}
 	}
 
