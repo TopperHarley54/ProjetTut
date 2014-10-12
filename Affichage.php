@@ -65,9 +65,9 @@
 					
 			if(isset($_SESSION['profil'])){
 				echo	'	<div class="col-lg-2">
-							Bonjour ' . $_SESSION['profil']['prenom'] .
-
-							'<a href="PromoSphere.php?a=Deconnexion"><p class="log">Deconnexion</p></div></a>
+                            <br>
+							<div class="col-lg-6"><p id="connecte">Bonjour ' . $_SESSION['profil']['prenom'] .'</p></div>
+							<a class="col-lg-6" href="PromoSphere.php?a=Deconnexion"><p class="log">Deconnexion</p></div></a>
 
 						</div>
                         </div>
@@ -87,7 +87,7 @@
 		public static function Accueil(){
 
       echo ' <div class="col-lg-offset-1 col-lg-10">
-      <div id="lastProd">Les derniers produits signalés...</div><br>';
+      <div id="lastProd">Les derniers produits signalés...</div><br></div><div>';
 			Affichage::AfiAll();
       
       echo '</div>';
