@@ -15,6 +15,29 @@
 	}
 </script>
 <?php
+    function menu(){
+        $tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier");
+        $tab_menu_txt = array( "Accueil", "Signaler une promotion", "Les promotions", "Liste de shopping");
+        $menu="";
+        $info = pathinfo($_SERVER['PHP_SELF']);
+        
+        foreach($tab_menu_link as $cle=>$lien){
+            $menu .= "   <li";
+            
+            if($info['basename'] == $lien){
+                $menu .=" class=\"active\"";
+            }
+                
+            $menu .= "><a href=\"" . $lien . "\">" . $tab_menu_txt[$cle] . "</a></li>\n";
+            
+        }
+        
+        return $menu;
+    }
+?>
+
+
+<?php
 
 	include_once 'Article.php';
 	include_once 'liste.php';
@@ -24,12 +47,10 @@
 	class Affichage{
 
 		public static function BarreNav(){         
-			echo '<script>var $(".ul li").on("click", function(){
-   $(".nav").find(".active").removeClass("active");
-   $(this).parent().addClass("active");
-});</script>
+		   require_once("./Affichage.php");
+           $menu = menu();
             
-            <nav class="navbar navbar-inverse" role="navigation" >
+           echo'<nav class="navbar navbar-inverse" role="navigation" >
 					<div class="row">
           <div class="col-lg-offset-1 col-lg-10">
                     <div class = "col-lg-9">
@@ -37,21 +58,8 @@
 						<img id="logo" src="inQontrol_qdance.png" style="max-height:75px; max-width:75px; float:left;"/>
                         <h1 class="col-lg-3" style="color:red;">Promo Sphère</h1>
                         <div class="col-lg-offset-1 col-lg-7" style="margin-top:1%">
-                        <ul class="nav navbar-nav">
-				            <li class="active" >
-								<a href="PromoSphere.php">Accueil</a>
-							</li>
-                        
-							<li >
-								<a href="PromoSphere.php?a=SignalerProm">Signaler une promotion</a>
-							</li>
-				
-							<li >
-								<a href="PromoSphere.php?a=toutePromo">Les promotions</a>
-							</li>
-							<li >
-								<a href="PromoSphere.php?a=AfficherPanier">Liste de shopping</a>
-							</li>';
+                        <ul class="nav navbar-nav">';
+                        echo $menu;
 						if(isset($_SESSION['profil']['com'])){
 			echo'			<li >
 								<a href="PromoSphere.php?a=Ajoutmag">Ajouter magasin</a>
