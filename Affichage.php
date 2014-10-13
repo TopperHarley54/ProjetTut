@@ -183,7 +183,7 @@
                                 <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-8 col-md-8 col-sm-8 col-xs-8">             
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
                                         <br><br>
-                                        <img class="img-circle" src="image/1.jpg" />
+                                        <img class="img-circle img-responsive" src="image/1.jpg" />
 						            </div>  <!-- fin de div contenant img --> 
 								    <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;">
                                         <div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
