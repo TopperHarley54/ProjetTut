@@ -97,7 +97,16 @@
       echo ' <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">
       <div id="lastProd">Les derniers produits signalés...</div><br></div><div>';
 			Affichage::AfiAll();
-      
+			
+		$b = Base::getConnection();
+			$save_query = "DELETE FROM events WHERE date < CURDATE();";
+			try{
+				$stmt = $b->prepare($save_query);
+				$a = $stmt->execute();
+				return $a;
+			}catch (PDOException $e){
+				return null;
+			}
       echo '</div>';
 
 		}
