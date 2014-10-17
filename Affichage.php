@@ -1,19 +1,4 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-<script>
-	function verif_INF(champ_prix, champ_promo) {
-		champ_prix = document.getElementsByName("champ_prix");
-		champ_promo = document.getElementByName("champ_promo");
-		
-		var valeur_prix = champ_prix.value;
-		var valeur_promo = champ_promo.value;
-		
-		if(valeur_prix <= valeur_promo){
-			alert("Le prix de promotion de l'article doit être inférieur au prix initial");
-		}
-		
-	}
-</script>
 <?php
     function menu(){
         $tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier");
@@ -173,8 +158,15 @@
 				        <label for="email">Email</label>
                     </div>
 				    <input type="text" name="email" value=""/><br><br>
-
-				    <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4"><input type="submit" value="S\'inscrire"/ class="btn btn-primary"></div>
+					
+					<td><b>Type</b></td>  
+					<td><input type=radio value="particulier" name="type" id="particulier" required/>Particulier
+					  <input type=radio value="commercant" name="type" id="commercant required">Commercant
+					  </select>
+					</td>
+					
+					<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
+					<input type="submit" value="S inscrire"  "class="btn btn-primary"/></div>
 				    </form>
                     </div></div>
 			    </div>';
