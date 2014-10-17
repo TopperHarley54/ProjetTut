@@ -3,6 +3,7 @@
 
 	session_start();
 	include_once "Article.php";
+	include_once "Magasin.php";
 	
 		$a = new article();
 		
@@ -29,8 +30,6 @@
 					$ext = $info->getExtension();
 					$file =Article::Nbimage().'.'.$ext;
 					$_FILES['photo']['name'] = $file;
-					echo $ext . '<br>';
-					echo $file. '<br>';
 					
 					$fichier = basename($_FILES['photo']['name']);
 					if(move_uploaded_file($_FILES['photo']['tmp_name'], $dossier . $file)) {
@@ -54,8 +53,10 @@
 		}
 		if(isset($_SESSION['profil']['cli'])){
 			$a->id_client = $_SESSION['profil']['userid'];
-		}else{
-			$a->id_magasin = $_SESSION['profil']['userid'];
+		}
+		if(isset($_SESSION['profil']['com'])){
+			$m = Magasin::findByNom($_POST['magasin']);
+			$a->id_magasin = $m->id_magasin;
 		}
 		$a->insert();
 		header('Location: PromoSphere.php?a=toutePromo');	
