@@ -400,14 +400,20 @@
 						<br>';		
 			if(isset($_SESSION['profil']['com'])){
 						
-				echo'		<label for="magasin">Magasin ?</label><br />
-							<select name="magasin" id="magasin">';
+				echo'		<div class="row">
+								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<label for="magasin">Magasin ?</label><br />
+								</div>
+								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<select name="magasin" id="magasin">';
 								
 				foreach(Magasin::finByIdCom($_SESSION['profil']['userid']) as $mag){
-					echo'	<option value="'.$mag->nom_magasin.'">'. $mag->nom_magasin .'</option>';
+					echo'				<option value="'.$mag->nom_magasin.'">'. $mag->nom_magasin .'</option>';
 				}
 				
-				echo '		</select>				
+				echo '				</select>	
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">				
 							</div>
