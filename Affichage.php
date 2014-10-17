@@ -369,6 +369,18 @@
         <input type="text" name="taille" value=""/>
         </div>
         </div>
+		
+				<br><br>
+				
+        <div class="row">
+        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+				<label for="couleur">Couleur</label>			
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+        <input type="text" name="couleur" value=""/>
+        </div>
+        </div>
+		
 				<br><br>
 				
         <div class="row">
