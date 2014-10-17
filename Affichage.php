@@ -181,91 +181,93 @@
 		}
 		
 		public static function Afi($art){
-			echo '<div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">	 
-			    	<div class="row" style="background:#F0EAE7;">
-                        <div class="bigbox">
-					        <h2 class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">';
-								echo $art->nom_article;
-
-                      echo '</h2>
-							<div class="row"> <!-- box affichant les informations du produit -->
-                                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-8 col-md-8 col-sm-8 col-xs-8">             
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-                                        <br><br>
-                                        <img class="img-circle img-responsive" src="'. $art->photo .'" />
-						            </div>  <!-- fin de div contenant img --> 
-								    <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;">
-                                        <div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
-                                            <br>
-										    <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Prix: <del>'. $art->prix .'</del>
-                                                </div>
-                                            </div>										
-									        <div class="row">
-                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Prix promo :'. $art->prix_promo .'
-                                                </div>
-                                            </div><br>';
+			echo '  <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">	 
+						<div class="row" style="background:#F0EAE7;">
+							<div class="bigbox">
+								<h2 class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">'. $art->nom_article .'</h2>                      
+								<div class="row"> <!-- box affichant les informations du produit -->
+									<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-8 col-md-8 col-sm-8 col-xs-8">             
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+											<br><br>
+											<img class="img-circle img-responsive" src="'. $art->photo .'" />
+										</div>  <!-- fin de div contenant img --> 
+										<div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;">
+											<div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
+												<br>
+												<div class="row">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Prix: <del>'. $art->prix .'</del></div>
+												</div>										
+												<div class="row">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Prix promo :'. $art->prix_promo .'</div>
+												</div><br>';
 												
-									        if(isset($_SESSION['profil'])){
-										        $count = liste::countArtById($_SESSION['profil']['userid']);
-										        if($count['nombre']  == 0){
-											        echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
-										        }else{
-											        echo'	<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
-										        }
-									        }else{
-										        echo'	<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
-									        }
-									        $mag = new Magasin();
-									        $mag = Magasin::findById($art->id_magasin);
+			if(isset($_SESSION['profil'])){
+				$count = liste::countArtById($_SESSION['profil']['userid']);
+					if($count['nombre']  == 0){
+						echo'					<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
+					}else{
+						echo'					<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
+					}
+			}else{
+				echo'							<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
+			}
+			$mag = new Magasin();
+			$mag = Magasin::findById($art->id_magasin);
 									
-									        if($art->id_client != null){
-										        $cli = new Client();
-										        $cli = Client::findById($art->id_client);
-										        echo '<br> Mise en ligne par <b>'. $cli->login_client .'</b>.';
-									        }else{
-										        if($art->id_magasin != null){
-											        echo '<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
-										        }
-									        }
+			if($art->id_client != null){
+			    $cli = new Client();
+			    $cli = Client::findById($art->id_client);
+			     echo '							<br> Mise en ligne par <b>'. $cli->login_client .'</b>.';
+			}else{
+				if($art->id_magasin != null){
+					echo '						<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
+				}
+			}
                                   
-									        echo'<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
-                                                    <div class="row"><br>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button>
-                                                        </div>
-                                                    </div>
-                                                 </a>
-                                                 <br>Période promotion: '. $art->datedebut .' au '. $art->datefin.'
-										         <div class="row"><br>';
+			echo'								<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
+												<div class="row"><br>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
+												</div>
+												</a>
+												<br>Période promotion: '. $art->datedebut .' au '. $art->datefin.'
+												<div class="row"><br>';
+                                           
+			if($art->id_magasin != null){
+				echo ' 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> Ce produit est disponible à '. $mag->nom_magasin .'</div>
+												</div>
+												<div class="row">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Au '. $mag->numero .', '. $mag->rue .', '. $mag->ville .'</div>
+												</div>';
+			}else{
+				echo ' 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+												</div>
+												<div class="row">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+												</div>';								
+			}
 												 
-											if($art->id_magasin != null){
-                                                 echo '   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> Ce produit est disponible à '. $mag->nom_magasin .'
-                                                    </div>
-                                                 </div>
-										         <div class="row">
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Au '. $mag->numero .', '. $mag->rue .', '. $mag->ville .'
-                                                    </div>
-                                                 </div>';
-											}
-												 
-									   	        echo' <div class="row"><br>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
-										              </div>
-									             </div>
-                                            </div>
-								       </div>
-                                  </div>
-                                  <hr />
-		     			          <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                                      <div class="descr-box">Description : '.																						
-									      $art->description.' <br>';
-                                          echo 'Taille(s): '. $art->taille_dispo .'<br>';
-									      echo 'Couleur: '. $art->couleur .'<br><br>
-								      </div>
-                                 </div><br><br>
-					        </div>
-	                   </div>
-	              </div>';
+			echo' 								<div class="row"><br>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
+														<div>
+															<br>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr />
+								<div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-8 col-md-8 col-sm-8 col-xs-8">
+									<div class="descr-box">Description : '.	$art->description.' <br>
+										Taille(s): '. $art->taille_dispo .
+										'<br>'. 'Couleur: '. $art->couleur .'<br><br>
+									</div>
+								</div>
+								<br><br>
+							</div>
+						</div>
+					</div>';
 		}
 		
 		public static function AfiAll(){

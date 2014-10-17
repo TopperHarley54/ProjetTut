@@ -57,7 +57,7 @@
 			$a->id_magasin = $_SESSION['profil']['userid'];
 		}
 		$a->insert();
-		//header('Location: PromoSphere.php?a=toutePromo');	
+		header('Location: PromoSphere.php?a=toutePromo');	
 	
 
 ?>
