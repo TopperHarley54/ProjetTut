@@ -192,7 +192,7 @@
                                 <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-8 col-md-8 col-sm-8 col-xs-8">             
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
                                         <br><br>
-                                        <img class="img-circle img-responsive" src="image/1.jpg" />
+                                        <img class="img-circle img-responsive" src="'. $art->photo .'" />
 						            </div>  <!-- fin de div contenant img --> 
 								    <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;">
                                         <div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
@@ -236,16 +236,20 @@
                                                     </div>
                                                  </a>
                                                  <br>Période promotion: '. $art->datedebut .' au '. $art->datefin.'
-										         <div class="row"><br>
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> Ce produit est disponible à '. $mag->nom_magasin .'
+										         <div class="row"><br>';
+												 
+											if($art->id_magasin != null){
+                                                 echo '   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> Ce produit est disponible à '. $mag->nom_magasin .'
                                                     </div>
                                                  </div>
 										         <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Au '. $mag->numero .', '. $mag->rue .', '. $mag->ville .'
                                                     </div>
-                                                 </div>
-									   	         <div class="row"><br>';
-							                     echo'<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
+                                                 </div>';
+											}
+												 
+									   	        echo' <div class="row"><br>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a><div><br></div></div>
 										              </div>
 									             </div>
                                             </div>
@@ -298,118 +302,116 @@
 		
 		public static function NouvelPromo(){
 			echo '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">';
-			echo '<form action="NvPromo.php" method="post">
+			echo '	<form action="NvPromo.php" method="post" enctype="multipart/form-data">
 			  
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-2 col-md-2 col-sm-2 col-xs-2"><div id="lastProd">Ajouter un bon plan :</div></div><br><br><br>
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="cbarre">code barre</label>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <input type="text" name="cbarre" value=""/>
-        </div>
-        </div>
-				<br><br>
+						<div class="row">
+							<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-2 col-md-2 col-sm-2 col-xs-2"><div id="lastProd">Ajouter un bon plan :</div></div><br><br><br>
+								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<label for="cbarre">code barre</label>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+									<input type="text" name="cbarre" value=""/>
+								</div>
+							</div>
+							<br><br>
 				
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="narticle">Nom de l\'article</label>
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <input type="text" name="narticle" value=""/>
-        </div>
-        </div>
-				<br><br>
+							<div class="row">
+								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<label for="narticle">Nom de l\'article</label>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+									<input type="text" name="narticle" value=""/>
+								</div>
+							</div>
+							<br><br>
 				
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="prix">Prix origine</label>				
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <input type="text" name="prix" value=""/>
-        </div>
-        </div>
-				<br><br>
+							<div class="row">
+								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<label for="prix">Prix origine</label>				
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+									<input type="text" name="prix" value=""/>
+								</div>
+							</div>
+							<br><br>
 				
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="prixprom">Prix promotion</label>
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">	
-        <input type="text" name="prixprom" value=""/>
-        </div>
-        </div>
-				<br><br>
+							<div class="row">
+								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<label for="prixprom">Prix promotion</label>
+								</div>
+								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">	
+									<input type="text" name="prixprom" value=""/>
+								</div>
+							</div>
+							<br><br>
 				
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="desc">Description</label>
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <textarea name="desc" rows="5" cols="50" > </textarea> 
-        </div>
-        </div>
-				<br>
+							<div class="row">
+								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<label for="desc">Description</label>
+								</div>
+								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<textarea name="desc" rows="5" cols="50" > </textarea> 
+								</div>
+						</div>
+						<br>
 				
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="image">Image produit</label>			
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <input type="file" name="photo" />
-        </div>
-        </div>
-				<br><br>
+						<div class="row">
+							<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<label for="image">Image produit</label>					
+							</div>
+							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<input type="file" name="photo"/>
+							</div>
+						</div>
+						<br><br>
 				
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="taille">Taille disponible</label>			
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <input type="text" name="taille" value=""/>
-        </div>
-        </div>
-		
-				<br><br>
+						<div class="row">
+							<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<label for="taille">Taille disponible</label>			
+							</div>
+							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<input type="text" name="taille" value=""/>
+							</div>
+						</div>
+						<br><br>
 				
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="couleur">Couleur</label>			
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <input type="text" name="couleur" value=""/>
-        </div>
-        </div>
-		
-				<br><br>
+						<div class="row">
+							<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<label for="couleur">Couleur</label>			
+							</div>
+							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<input type="text" name="couleur" value=""/>
+							</div>
+						</div>		
+						<br><br>
 				
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="datedeb">Date début</label>				
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <input type="date" name="datedeb">
-        </div>
-        </div>
-				<br><br>
+						<div class="row">
+							<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<label for="datedeb">Date début</label>				
+							</div>
+							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<input type="date" name="datedeb">
+							</div>
+						</div>
+						<br><br>
 				
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<label for="datefin">Date fin</label>
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <input type="date" name="datefin">
-        </div>
-        </div>
-				<br>
+						<div class="row">
+							<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<label for="datefin">Date fin</label>
+							</div>
+							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<input type="date" name="datefin">
+							</div>
+						</div>
+						<br>
 
-        <div class="row">
-        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">				
-        </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-        <input type="submit" onclick="verif_INF(prix,prixprom)" value="Valider promo" class="btn btn-primary"/>
-        </div>
-        </div>
+						<div class="row">
+							<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">				
+							</div>
+							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<input type="submit" onclick="verif_INF(prix,prixprom)" value="Valider promo" class="btn btn-primary"/>
+							</div>
+						</div>
 				</form>';
 			echo '</div>';
 		}

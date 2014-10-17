@@ -22,19 +22,22 @@
 			$a->description = $_POST['desc'];
 		}
 		if(isset($_FILES['photo']['name'])){
-				$dossier = 'image/';
+					$dossier = 'image/';
 					
-				$info = new SplFileInfo($_FILES['photo']['name']);
-				$ext = $info->getExtension();
-				$file =Article::Nbimage().'.'.$ext;
-				$_FILES['photo']['name'] = $file;
-				
-				$fichier = basename($_FILES['photo']['name']);
-				if(move_uploaded_file($_FILES['photo']['tmp_name'], $dossier . $fichier)) {
-					$a->photo = $dossier . $_FILES['photo']['name'];
-				}else{ 
-					echo 'Echec de l\'upload !';
-				}				
+					$info = new SplFileInfo($_FILES['photo']['name']);
+					$ext = $info->getExtension();
+					$file =Article::Nbimage().'.'.$ext;
+					$_FILES['photo']['name'] = $file;
+					echo $ext . '<br>';
+					echo $file. '<br>';
+					
+					$fichier = basename($_FILES['photo']['name']);
+					if(move_uploaded_file($_FILES['photo']['tmp_name'], $dossier . $file)) {
+						$a->photo = $dossier . $_FILES['photo']['name'];
+		
+					}else{ 
+						echo 'Echec de l\'upload !';
+					}
 		}
 		if(isset($_POST['taille'])){
 			$a->taille_dispo = $_POST['taille'];
@@ -54,7 +57,7 @@
 			$a->id_magasin = $_SESSION['profil']['userid'];
 		}
 		$a->insert();
-		header('Location: PromoSphere.php?a=toutePromo');	
+		//header('Location: PromoSphere.php?a=toutePromo');	
 	
 
 ?>

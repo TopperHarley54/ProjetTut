@@ -280,7 +280,6 @@
 			$tab = $stmt->fetch();
 			$compteur = $tab['nbimage'];
 			$temp = $compteur + 1;
-			echo $temp;
 			
 			$b = Base::getConnection();
 			$req = $b->prepare("update compteur set nbimage = :temp where 1");
