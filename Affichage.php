@@ -394,46 +394,106 @@
 		}
 		
 		public static function ModifPromo($art){
-			echo '<div>';
+            echo '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">';
 			echo '<form action="ModifPromo.php?idart='.$art->id_article.'" method="post">
 			
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">	
 				<label for="cbarre">code barre</label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 				<input type="text" name="cbarre" value="'.$art->code_barre.'"/>
 				<br><br>
+                </div>
+                </div>
 				
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">	
 				<label for="narticle">Nom de l\'article</label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 				<input type="text" name="narticle" value="'.$art->nom_article.'"/>
 				<br><br>
+                </div>
+                </div>
 				
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">	
 				<label for="prix">Prix origine</label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 				<input type="text" name="prix" value="'.$art->prix.'"/>
 				<br><br>
+                </div>
+                </div>
 					
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">	
 				<label for="prixprom">Prix promotion</label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 				<input type="text" name="prixprom" value="'.$art->prix_promo.'"/>
 				<br><br>
+                </div>
+                </div>
 				
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">	
 				<label for="desc">Description</label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 				<textarea name="desc" rows="5" cols="50" >'.$art->description.' </textarea> 
 				<br>
+                </div>
+                </div>
 				
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">	
 				<label for="image">Image produit</label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 				<input type="file" name="photo">'.$art->photo.' </> 
 				<br><br>
+                </div>
+                </div>
 				
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">	
 				<label for="taille">Taille disponible</label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 				<input type="text" name="taille" value="'.$art->taille_dispo.'"/>
 				<br><br>
+                </div>
+                </div>
 				
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">	
 				<label for="datedeb">Date début</label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 				<input type="date" name="datedeb"> '.$art->datedebut.' </>
 				<br><br>
+                </div>
+                </div>
 				
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">	
 				<label for="datefin">Date fin</label>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 				<input type="date" name="datefin"> '.$art->datefin.' </>
 				<br>
+                </div>
+                </div>
 
-				<input type="submit" value="Valider promo"/>
+                <div class="row">
+                <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                </div>
+                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+				<input type="submit" value="Valider promo" class="btn btn-primary"/>
+                </div>
+                </div>
 				</form>';
 			echo '</div>';
 		}
