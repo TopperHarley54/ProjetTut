@@ -56,7 +56,7 @@ public static function callAction(){
         case("addLs"):
 			if(isset($_SESSION['profil'])){
 				Affichage::AjoutListe($_GET['idart']);
-				header('Location: PromoSphere.php?a=AfficherPanier');
+				//header('Location: PromoSphere.php?a=AfficherPanier');
 			}else{
 				echo 'vous devez vous connecter pour ajouter un élèment a votre liste';
 			}
