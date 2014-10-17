@@ -397,17 +397,27 @@
 								<input type="date" name="datefin">
 							</div>
 						</div>
-						<br>
-
-						<div class="row">
-							<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">				
+						<br>';		
+			if(isset($_SESSION['profil']['com'])){
+						
+				echo'		<label for="magasin">Magasin ?</label><br />
+							<select name="magasin" id="magasin">';
+								
+				foreach(Magasin::finByIdCom($_SESSION['profil']['userid']) as $mag){
+					echo'	<option value="'.$mag->nom_magasin.'">'. $mag->nom_magasin .'</option>';
+				}
+				
+				echo '		</select>				
+							<div class="row">
+								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">				
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 								<input type="submit" onclick="verif_INF(prix,prixprom)" value="Valider promo" class="btn btn-primary"/>
 							</div>
 						</div>
-				</form>';
-			echo '</div>';
+					</form>
+				</div>';
+			}
 		}
 		
 		public static function ModifPromo($art){

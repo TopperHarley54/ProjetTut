@@ -158,8 +158,15 @@
 			$mag->codepostal = $tab['codepostal'];
 			$mag->description = $tab['description'];
 			$mag->tel_magasin = $tab['tel_magasin'];
-			$mag->id_commercant = $tab['d_commercant'];
+			$mag->id_commercant = $tab['id_commercant'];
 			return $mag;
+		}
+		
+		public static function finByIdCom($id){
+			$b = Base::getConnection();
+			$query = $b->prepare("select * from magasin where id_magasin =". $id) ;
+			$dbres = $query->execute();
+			return $query->fetchAll(PDO::FETCH_CLASS,"magasin");
 		}
 		
 	}
