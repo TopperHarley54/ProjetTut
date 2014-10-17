@@ -48,9 +48,13 @@
 		if(isset($_POST['datefin'])){
 			$a->datefin = $_POST['datefin'];
 		}
-		$a->id_client = $_SESSION['profil']['userid'];
+		if(isset($_SESSION['profil']['cli'])){
+			$a->id_client = $_SESSION['profil']['userid'];
+		}else{
+			$a->id_magasin = $_SESSION['profil']['userid'];
+		}
 		$a->insert();
-		//header('Location: PromoSphere.php?a=toutePromo');	
+		header('Location: PromoSphere.php?a=toutePromo');	
 	
 
 ?>
