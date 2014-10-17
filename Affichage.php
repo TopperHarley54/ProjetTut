@@ -564,7 +564,7 @@
 								<label for="ville">Ville</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="ville id=ville" /><br />
+								<input type="text" name="ville" id="ville" /><br />
 							</div>
 						</div>
 						<br>

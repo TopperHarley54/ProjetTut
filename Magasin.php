@@ -39,8 +39,9 @@
 		
 		public function insert() {
 			$b = Base::getConnection();
-			$query = "INSERT INTO magasin values ('', '$this->id_magasin', '$this->nom_magasin', '$this->numero', '$this->rue', '$this->ville', '$this->codepostal', '$this->description', '$this->tel_magasin', '$this->id_commercant')";
+			$query = "INSERT INTO magasin(nom_magasin,numero,rue,ville,codepostal,description,tel_magasin,id_commercant) VALUES ('$this->nom_magasin', $this->numero, '$this->rue', '$this->ville', '$this->codepostal', '$this->description', $this->tel_magasin, $this->id_commercant)";
 			$res = $b->query($query);
+			echo $query;
 			$lastid = $b->lastInsertId();
 			$this->id = $lastid;
 		}

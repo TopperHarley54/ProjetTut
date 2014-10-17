@@ -7,19 +7,20 @@
 		$a = new article();
 		
 		if(isset($_POST['cbarre'])){
-			$a->code_barre = $_POST['cbarre'];
+			$a->code_barre = str_replace("'","\'",$_POST['cbarre']);
+			
 		}
 		if(isset($_POST['narticle'])){
-			$a->nom_article = $_POST['narticle'];
+			$a->nom_article = str_replace("'","\'",$_POST['narticle']);
 		}
 		if(isset($_POST['prix'])){
-			$a->prix = $_POST['prix'];
+			$a->prix = str_replace("'","\'",$_POST['prix']);
 		}
 		if(isset($_POST['prixprom'])){
-			$a->prix_promo = $_POST['prixprom'];
+			$a->prix_promo = str_replace("'","\'",$_POST['prixprom']);
 		}
 		if(isset($_POST['desc'])){
-			$a->description = $_POST['desc'];
+			$a->description = str_replace("'","\'",$_POST['desc']);
 		}
 		if(isset($_FILES['photo']['name'])){
 					$dossier = 'image/';
@@ -40,10 +41,10 @@
 					}
 		}
 		if(isset($_POST['taille'])){
-			$a->taille_dispo = $_POST['taille'];
+			$a->taille_dispo = str_replace("'","\'",$_POST['taille']);
 		}
 		if(isset($_POST['couleur'])){
-			$a->couleur = $_POST['couleur'];
+			$a->couleur = str_replace("'","\'",$_POST['couleur']);
 		}
 		if(isset($_POST['datedeb'])){
 			$a->datedebut = $_POST['datedeb'];

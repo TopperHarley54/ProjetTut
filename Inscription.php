@@ -12,18 +12,18 @@
 				
 		if ($_POST['type']=='particulier'){
 			$user = new Client();
-			$user->login_client = $_POST['login'];
-			$user->mdp_client = $_POST['mdp'];
-			$user->prenom_client = $_POST['prenom'];
-			$user->nom_client = $_POST['nom'];
-			$user->mail_client = $_POST['email'];
+			$user->login_client = str_replace("'","\'",$_POST['login']);
+			$user->mdp_client = str_replace("'","\'",$_POST['mdp']);
+			$user->prenom_client = str_replace("'","\'",$_POST['prenom']);
+			$user->nom_client = str_replace("'","\'",$_POST['nom']);
+			$user->mail_client = str_replace("'","\'",$_POST['email']);
 		}else if($_POST['type']=='commercant'){
 			$user = new Commercant();
-			$user->login_com = $_POST['login'];
-			$user->mdp_com = $_POST['mdp'];
-			$user->nom_com = $_POST['nom'];
-			$user->prenom_com = $_POST['prenom'];
-			$user->mail_com = $_POST['email'];
+			$user->login_com = str_replace("'","\'",$_POST['login']);
+			$user->mdp_com = str_replace("'","\'",$_POST['mdp']);
+			$user->nom_com = str_replace("'","\'",$_POST['nom']);
+			$user->prenom_com = str_replace("'","\'",$_POST['prenom']);
+			$user->mail_com = str_replace("'","\'",$_POST['email']);
 		}
 		
 				
