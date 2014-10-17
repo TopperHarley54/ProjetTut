@@ -1,6 +1,5 @@
 <?php
-include_once 'Controller.php' ; 
-session_start();
+include_once 'Controller.php' ;
 
 $c = new Controller() ;  
 $c->callAction( $_GET );

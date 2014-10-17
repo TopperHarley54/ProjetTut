@@ -1,3 +1,4 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <?php
 
 	include_once 'Magasin.php';
@@ -25,7 +26,6 @@
 	if(isset($_POST['tel'])){
 		$m->tel_magasin = $_POST['tel'];
 	}
-	
-	$m->id_commercant =  $_SESSION['profil']['userid'];
+	$m->id_commercant = $_SESSION['profil']['userid'];
 	$m->insert();
 ?>

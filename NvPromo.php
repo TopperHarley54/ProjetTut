@@ -1,6 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <?php
 
+	session_start();
 	include_once "Article.php";
 	
 		$a = new article();
@@ -47,10 +48,9 @@
 		if(isset($_POST['datefin'])){
 			$a->datefin = $_POST['datefin'];
 		}
-		echo $a->id_article;
 		$a->id_client = $_SESSION['profil']['userid'];
 		$a->insert();
-		header('Location: PromoSphere.php?a=toutePromo');	
+		//header('Location: PromoSphere.php?a=toutePromo');	
 	
 
 ?>

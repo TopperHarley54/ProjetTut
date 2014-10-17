@@ -1,4 +1,5 @@
 <?php
+	session_start();
 
 	include_once 'Affichage.php';
 	include_once 'liste.php';
@@ -96,7 +97,9 @@ public static function callAction(){
             break;
 			
 		case("Ajoutmag"):
-            Affichage::Ajoutmag();
+			if(isset($_SESSION['profil']['userid'])){
+				Affichage::Ajoutmag();
+			}
             break;
     }
 
