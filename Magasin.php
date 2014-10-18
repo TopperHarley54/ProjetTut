@@ -76,6 +76,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$mag = new Magasin();
@@ -99,6 +100,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$mag = new Magasin();
@@ -123,6 +125,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$mag = new Magasin();
@@ -147,6 +150,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$mag = new Magasin();
@@ -164,7 +168,7 @@
 		
 		public static function finByIdCom($id){
 			$b = Base::getConnection();
-			$query = $b->prepare("select * from magasin where id_magasin =". $id) ;
+			$query = $b->prepare("select * from magasin where id_commercant =". $id) ;
 			$dbres = $query->execute();
 			return $query->fetchAll(PDO::FETCH_CLASS,"magasin");
 		}

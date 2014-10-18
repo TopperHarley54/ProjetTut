@@ -88,6 +88,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$art = new Article();
@@ -117,6 +118,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$art = new Article();
@@ -145,6 +147,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$art = new Article();
@@ -173,6 +176,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$art = new Article();
@@ -201,6 +205,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$art = new Article();
@@ -230,6 +235,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$art = new Article();
@@ -298,6 +304,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$art = new Article();

@@ -56,7 +56,7 @@ public static function callAction(){
         case("addLs"):
 			if(isset($_SESSION['profil'])){
 				Affichage::AjoutListe($_GET['idart']);
-				//header('Location: PromoSphere.php?a=AfficherPanier');
+				header('Location: PromoSphere.php?a=AfficherPanier');
 			}else{
 				echo 'vous devez vous connecter pour ajouter un élèment a votre liste';
 			}
@@ -67,12 +67,12 @@ public static function callAction(){
 				liste::supprime($_GET['idart'],$_SESSION['profil']['userid']);
 				header('Location: PromoSphere.php?a=AfficherPanier');
 			}else{
-				echo 'vous devez vous connecter pour ajouter un élèment a votre liste';
+				echo 'vous devez vous connecter pour supprimer un élèment a votre liste';
 			}
 			break;
             
-        case("modifProm"):
-            Affichage::ModifPromo(Article::findById($_GET['idart']));
+        case("modifProm"):			
+			Affichage::ModifPromo(Article::findById($_GET['idart']));
             break;
             
         case("supProm"):
@@ -101,6 +101,10 @@ public static function callAction(){
 				Affichage::Ajoutmag();
 			}
             break;
+		
+		default:
+			echo' mouahahahahahahaha fausse url';
+			break;
     }
 
 

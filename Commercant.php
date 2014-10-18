@@ -70,6 +70,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$com = new Commercant();
@@ -91,6 +92,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$com = new Commercant();
@@ -112,6 +114,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$com = new Commercant();
@@ -133,6 +136,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$com = new Commercant();

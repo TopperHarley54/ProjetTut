@@ -37,41 +37,41 @@
             
            echo'<nav class="navbar navbar-inverse" role="navigation" >
 					<div class="row">
-          <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <div class = "col-lg-9 col-md-9 col-sm-9 col-xs-9">
+						<div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+							<div class = "col-lg-9 col-md-9 col-sm-9 col-xs-9">
                     
-						<img id="logo" src="inQontrol_qdance.png" style="max-height:75px; max-width:75px; float:left;"/>
-                        <h1 class="col-lg-3  col-md-3 col-sm-3 col-xs-3" style="color:red;">Promo Sphère</h1>
-                        <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-offset-1 col-lg-7  col-md-7 col-sm-7 col-xs-7" style="margin-top:1%">
-                        <ul class="nav navbar-nav">';
-                        echo $menu;
-						if(isset($_SESSION['profil']['com'])){
-			echo'			<li >
-								<a href="PromoSphere.php?a=Ajoutmag">Ajouter magasin</a>
-							</li>';
-						}
-			echo'			</ul> 
-            </div>
-                        
-                        
-					</div>';
+								<img id="logo" src="inQontrol_qdance.png" style="max-height:75px; max-width:75px; float:left;"/>
+									<h1 class="col-lg-3  col-md-3 col-sm-3 col-xs-3" style="color:red;">Promo Sphère</h1>
+									<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-offset-1 col-lg-7  col-md-7 col-sm-7 col-xs-7" style="margin-top:1%">
+										<ul class="nav navbar-nav">';
+            echo $menu;
+						
+			if(isset($_SESSION['profil']['com'])){
+				echo'						<li >
+												<a href="PromoSphere.php?a=Ajoutmag">Ajouter magasin</a>
+											</li>';
+			}
+			
+			echo'						</ul> 
+									</div>           
+								</div>';
 					
 			if(isset($_SESSION['profil'])){
-				echo	'	<div class="col-lg-2  col-md-2 col-sm-2 col-xs-2">
-                            <br>
-							<div class="col-lg-6  col-md-6 col-sm-6 col-xs-6"><p id="connecte">Bonjour ' . $_SESSION['profil']['prenom'] .'</p></div>
-							<a class="col-lg-6  col-md-6 col-sm-6 col-xs-6" href="PromoSphere.php?a=Deconnexion"><p class="log">Deconnexion</p></div></a>
+				echo'			<div class="col-lg-2  col-md-2 col-sm-2 col-xs-2">
+									<br>
+									<div class="col-lg-6  col-md-6 col-sm-6 col-xs-6"><p id="connecte">Bonjour ' . $_SESSION['profil']['prenom'] .'</p></div>
+									<a class="col-lg-6  col-md-6 col-sm-6 col-xs-6" href="PromoSphere.php?a=Deconnexion"><p class="log">Deconnexion</p></div></a>
 
-						</div>
-                        </div>
+								</div>
+							</div>
 					</nav>';	
 			}else{
-				echo	'	<div class="col-lg-2  col-md-2 col-sm-2 col-xs-2">
-              <br>
-							<a class="col-lg-6  col-md-6 col-sm-6 col-xs-6" href="PromoSphere.php?a=Connexion"><p class="log">Se connecter</p></a>
-							<a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="PromoSphere.php?a=Inscription"><p class="log">S\'inscrire</p></a>
-						</div>
-            </div>
+				echo	'		<div class="col-lg-2  col-md-2 col-sm-2 col-xs-2">
+									<br>
+									<a class="col-lg-6  col-md-6 col-sm-6 col-xs-6" href="PromoSphere.php?a=Connexion"><p class="log">Se connecter</p></a>
+									<a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="PromoSphere.php?a=Inscription"><p class="log">S\'inscrire</p></a>
+								</div>
+							</div>
 					</nav>';
 			}
 		}
@@ -215,13 +215,21 @@
 					echo '						<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
 				}
 			}
-                                  
-			echo'								<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
-												<div class="row"><br>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
-												</div>
-												</a>
-												<br>Période promotion: '. $art->datedebut .' au '. $art->datefin.'
+            
+			if( (isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client) || ( isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant)){
+			
+				echo'							<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
+													<div class="row"><br>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
+													</div>
+												</a>';
+			}else{
+				echo'							<div class="row"><br>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary" >Modifier la promotion</button></div>
+												</div>';
+			}
+			
+			echo'								<br>Période promotion: '. $art->datedebut .' au '. $art->datefin.'
 												<div class="row"><br>';
                                            
 			if($art->id_magasin != null){
@@ -237,15 +245,27 @@
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 												</div>';								
 			}
-												 
-			echo' 								<div class="row"><br>
+			
+
+			if( (isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client) || ( isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant)){
+				echo'							<div class="row"><br>
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
 														<div>
 															<br>
 														</div>
 													</div>
-												</div>
-											</div>
+												</div>';
+			}else{
+				echo'							<div class="row"><br>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <button class="btn btn-primary">Supprimer</button>
+														<div>
+															<br>
+														</div>
+													</div>
+												</div>';
+			}
+			
+			echo'							</div>
 										</div>
 									</div>
 								</div>

@@ -69,6 +69,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$cli = new Client();
@@ -90,6 +91,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$cli = new Client();
@@ -111,6 +113,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$cli = new Client();
@@ -132,6 +135,7 @@
 			}catch (PDOException $e){
 				return null;
 			}
+			
 			$res = array();
 			$tab = $stmt->fetch();
 			$cli = new Client();

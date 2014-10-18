@@ -26,6 +26,7 @@
 		public function insert(){
 			$b = Base::getConnection();
 			$query = "INSERT INTO liste values ($this->id_client,$this->id_article)";
+			echo $query;
 			$res = $b->query($query);
 		}
 		

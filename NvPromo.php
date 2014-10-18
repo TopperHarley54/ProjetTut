@@ -58,6 +58,7 @@
 			$m = Magasin::findByNom($_POST['magasin']);
 			$a->id_magasin = $m->id_magasin;
 		}
+		
 		$a->insert();
 		header('Location: PromoSphere.php?a=toutePromo');	
 	
