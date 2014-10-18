@@ -1,8 +1,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <?php
+
     function menu(){
-        $tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier");
-        $tab_menu_txt = array( "Accueil", "Signaler une promotion", "Les promotions", "Liste de shopping");
+		
+		if(isset($_SESSION['profil']['com'])){
+			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=Ajoutmag", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier");
+			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Ajouter magasin", "Les promotions", "Liste de shopping");
+		}else{
+			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier");
+			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Les promotions", "Liste de shopping");
+		}
+        
         $menu="";
         $info = pathinfo($_SERVER['PHP_SELF']);
         
@@ -42,15 +50,9 @@
                     
 								<img id="logo" src="inQontrol_qdance.png" style="max-height:75px; max-width:75px; float:left;"/>
 									<h1 class="col-lg-3  col-md-3 col-sm-3 col-xs-3" style="color:red;">Promo Sphère</h1>
-									<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-offset-1 col-lg-7  col-md-7 col-sm-7 col-xs-7" style="margin-top:1%">
+									<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-offset-1 col-lg-9  col-md-7 col-sm-7 col-xs-7" style="margin-top:1%">
 										<ul class="nav navbar-nav">';
             echo $menu;
-						
-			if(isset($_SESSION['profil']['com'])){
-				echo'						<li >
-												<a href="PromoSphere.php?a=Ajoutmag">Ajouter magasin</a>
-											</li>';
-			}
 			
 			echo'						</ul> 
 									</div>           
@@ -247,7 +249,7 @@
 			}
 			
 
-			if( (isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client) || ( isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant)){
+			if( isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client){
 				echo'							<div class="row"><br>
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
 														<div>
@@ -255,6 +257,16 @@
 														</div>
 													</div>
 												</div>';
+			}else if(isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant){
+				echo'							<div class="row"><br>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
+														<div>
+															<br>
+														</div>
+													</div>
+												</div>';
+				echo $_SESSION['profil']['com'];
+				
 			}else{
 				echo'							<div class="row"><br>
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <button class="btn btn-primary">Supprimer</button>

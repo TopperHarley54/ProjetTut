@@ -103,7 +103,7 @@ public static function callAction(){
             break;
 		
 		default:
-			echo' mouahahahahahahaha fausse url';
+			header('Location: PromoSphere.php?a=accueil');						
 			break;
     }
 
