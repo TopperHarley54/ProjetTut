@@ -36,6 +36,7 @@
 	include_once 'liste.php';
 	include_once 'Client.php';
 	include_once 'Magasin.php';
+	include_once 'Commercant.php';
 	
 	class Affichage{
 
@@ -218,8 +219,14 @@
 				}
 			}
             
-			if( (isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client) || ( isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant)){
+			if( isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client){
 			
+				echo'							<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
+													<div class="row"><br>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
+													</div>
+												</a>';
+			}else if(isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant){
 				echo'							<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
 													<div class="row"><br>
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
@@ -264,9 +271,7 @@
 															<br>
 														</div>
 													</div>
-												</div>';
-				echo $_SESSION['profil']['com'];
-				
+												</div>';				
 			}else{
 				echo'							<div class="row"><br>
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <button class="btn btn-primary">Supprimer</button>

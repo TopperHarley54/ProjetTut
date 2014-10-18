@@ -30,14 +30,15 @@
 		
 		public static function charger($utilisateur) {			
 			session_start();
-			if($utilisateur->id_client != null){
+			if($utilisateur->id_client > 0){
 				$profil = array('userid'=>$utilisateur->id_client, 'login'=>$utilisateur->login_client, 'prenom'=>$utilisateur->prenom_client, 'cli'=>'true');
 			}else{
 				$profil = array('userid'=>$utilisateur->id_com, 'login'=>$utilisateur->login_com, 'prenom'=>$utilisateur->prenom_com, 'com'=>'true');
 			}
 			
 			$_SESSION['profil']=$profil;
-			header('Location: PromoSphere.php?a=accueil');
+			echo $_SESSION['profil']['userid'];
+			//header('Location: PromoSphere.php?a=accueil');
 			exit();
 		}
 	}
