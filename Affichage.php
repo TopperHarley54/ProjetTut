@@ -4,11 +4,14 @@
     function menu(){
 		
 		if(isset($_SESSION['profil']['com'])){
-			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=Ajoutmag", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier");
-			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Ajouter magasin", "Les promotions", "Liste de shopping");
+			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=Ajoutmag", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier", "PromoSphere?a=mesprom");
+			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Ajouter magasin", "Les promotions", "Liste de shopping", "Mes promotions");
+		}else if(isset($_SESSION['profil']['cli'])){
+			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier", "PromoSphere?a=mesprom");
+			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Les promotions", "Liste de shopping", "Mes promotions");
 		}else{
-			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier");
-			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Les promotions", "Liste de shopping");
+			$tab_menu_link = array( "PromoSphere.php","PromoSphere.php?a=toutePromo");
+			$tab_menu_txt = array( "Accueil", "Les promotions");
 		}
         
         $menu="";
@@ -51,7 +54,7 @@
                     
 								<img id="logo" src="inQontrol_qdance.png" style="max-height:75px; max-width:75px; float:left;"/>
 									<h1 class="col-lg-3  col-md-3 col-sm-3 col-xs-3" style="color:red;">Promo Sphère</h1>
-									<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-offset-1 col-lg-9  col-md-7 col-sm-7 col-xs-7" style="margin-top:1%">
+									<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-offset-1 col-lg-11  col-md-7 col-sm-7 col-xs-7" style="margin-top:1%">
 										<ul class="nav navbar-nav">';
             echo $menu;
 			
@@ -175,6 +178,7 @@
 			    </div>';
 		}
 		
+		//Affiche un article
 		public static function Afi($art){
 			echo '  <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">	 
 						<div class="row" style="background:#F0EAE7;">
@@ -196,19 +200,10 @@
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Prix promo :'. $art->prix_promo .'</div>
 												</div><br>';
 												
-			if(isset($_SESSION['profil'])){
-				$count = liste::countArtById($_SESSION['profil']['userid']);
-					if($count['nombre']  == 0){
-						echo'					<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
-					}else{
-						echo'					<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
-					}
-			}else{
-				echo'							<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter a la liste</button></a>';
-			}
 			$mag = new Magasin();
 			$mag = Magasin::findById($art->id_magasin);
-									
+			
+			//Indique le nom/enseigne de la personne qui a mis l'article en ligne
 			if($art->id_client != null){
 			    $cli = new Client();
 			    $cli = Client::findById($art->id_client);
@@ -218,27 +213,9 @@
 					echo '						<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
 				}
 			}
-            
-			if( isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client){
 			
-				echo'							<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
-													<div class="row"><br>
-														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
-													</div>
-												</a>';
-			}else if(isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant){
-				echo'							<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
-													<div class="row"><br>
-														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
-													</div>
-												</a>';
-			}else{
-				echo'							<div class="row"><br>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary" >Modifier la promotion</button></div>
-												</div>';
-			}
-			
-			echo'								<br>Période promotion: '. $art->datedebut .' au '. $art->datefin.'
+			//Date de promotion
+			echo'								<br>En promotion du '. $art->datedebut .' au '. $art->datefin.'
 												<div class="row"><br>';
                                            
 			if($art->id_magasin != null){
@@ -255,26 +232,40 @@
 												</div>';								
 			}
 			
-
-			if( isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client){
-				echo'							<div class="row"><br>
+			//Ajout bouton liste
+			if(isset($_SESSION['profil'])){
+				$count = liste::countArtById($_SESSION['profil']['userid']);
+					if($count['nombre']  == 0){
+						echo'					<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
+					}else{
+						echo'					<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
+					}
+			}	
+			
+			//bouton asuppression et modification
+			if( (isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client) || (isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant)){
+				
+				echo'							<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
+													<div class="row"><br>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
+													</div>
+												</a>';			
+				
+				echo'							<div class="row">
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
 														<div>
 															<br>
 														</div>
 													</div>
-												</div>';
-			}else if(isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant){
-				echo'							<div class="row"><br>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
-														<div>
-															<br>
-														</div>
-													</div>
-												</div>';				
+												</div>';	
 			}else{
+			
 				echo'							<div class="row"><br>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <button class="btn btn-primary">Supprimer</button>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+												</div>';
+												
+				echo'							<div class="row"><br>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 														<div>
 															<br>
 														</div>
@@ -282,6 +273,7 @@
 												</div>';
 			}
 			
+			//description,taille et couleur
 			echo'							</div>
 										</div>
 									</div>
@@ -299,6 +291,7 @@
 					</div>';
 		}
 		
+		//affiche tous les article
 		public static function AfiAll(){
             echo'<div class="row">
                     <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">';

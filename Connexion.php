@@ -38,7 +38,7 @@
 			
 			$_SESSION['profil']=$profil;
 			echo $_SESSION['profil']['userid'];
-			//header('Location: PromoSphere.php?a=accueil');
+			header('Location: PromoSphere.php?a=accueil');
 			exit();
 		}
 	}

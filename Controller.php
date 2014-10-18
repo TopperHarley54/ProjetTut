@@ -101,6 +101,12 @@ public static function callAction(){
 				Affichage::Ajoutmag();
 			}
             break;
+			
+		case("mesprom"):
+			if(isset($_SESSION['profil'])){
+				Affichage::Mesprom($_SESSION['profil']['userid']);
+			}
+			break;
 		
 		default:
 			header('Location: PromoSphere.php?a=accueil');						
