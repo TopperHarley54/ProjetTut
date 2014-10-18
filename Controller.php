@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	//session_start();
 
 	include_once 'Affichage.php';
 	include_once 'liste.php';
@@ -104,7 +104,7 @@ public static function callAction(){
 			
 		case("mesprom"):
 			if(isset($_SESSION['profil'])){
-				Affichage::Mesprom($_SESSION['profil']['userid']);
+				Affichage::Mesprom();
 			}
 			break;
 		
