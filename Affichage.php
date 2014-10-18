@@ -235,45 +235,50 @@
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 												</div>';								
 			}
-
-			//Ajout bouton liste
-			if(isset($_SESSION['profil'])){
-				$count = liste::countArtById($_SESSION['profil']['userid']);
-				if($count['nombre']  == 0){
-					echo'					<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
+			
+			if((isset($_GET['a']) && $_GET['a'] != 'mesprom') || !isset($_GET['a'])){
+				//Ajout bouton liste
+				if(isset($_SESSION['profil'])){
+					$count = liste::countArtById($_SESSION['profil']['userid']);
+					if($count['nombre']  == 0){
+						echo'					<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
+					}else{
+						echo'					<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
+					}
+				}	
+			}
+			
+			if(isset($_GET['a']) && $_GET['a'] == 'mesprom'){
+				
+				//bouton suppression et modification
+				if( (isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client) || isset($_SESSION['profil']['com'])){
+					
+					echo'							<br><a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
+														<div class="row"><br>
+															<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
+														</div>
+													</a>';			
+					
+					echo'							<div class="row">
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
+															<div>
+															</div>
+														</div>
+													</div><br>';
 				}else{
-					echo'					<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
+				
+					echo'							<div class="row"><br>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+													</div>';
+													
+					echo'							<div class="row"><br>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+															<div>
+																
+															</div>
+														</div>
+													</div>';
 				}
-			}	
-			
-			//bouton suppression et modification
-			if( (isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client) || (isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant)){
-				
-				echo'							<br><a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
-													<div class="row"><br>
-														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
-													</div>
-												</a>';			
-				
-				echo'							<div class="row">
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
-														<div>
-														</div>
-													</div>
-												</div><br>';
-			}else{
-			
-				echo'							<div class="row"><br>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-												</div>';
-												
-				echo'							<div class="row"><br>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-														<div>
-															
-														</div>
-													</div>
-												</div>';
 			}
 			
 			//description,taille et couleur

@@ -105,6 +105,8 @@ public static function callAction(){
 		case("mesprom"):
 			if(isset($_SESSION['profil'])){
 				Affichage::Mesprom();
+			}else{
+				header('Location: PromoSphere.php?a=accueil');	
 			}
 			break;
 		
