@@ -1,5 +1,4 @@
 <?php
-
 	include_once "Base.php";
 	include_once "Article.php";
 	
@@ -38,28 +37,19 @@
 			return $result;
 		}
 		
-		public static function countArtById($idcli){
+		public static function countArtById($idcli,$art){
 			$b = Base::getConnection();
-			if(isset($_SESSION['profil']['cli'])){
-				$req = $b->prepare('SELECT COUNT(id_article) as nombre FROM liste WHERE id_client=:idcli');
-			}else if(isset($_SESSION['profil']['com'])){
-				$req = $b->prepare('SELECT COUNT(id_article) as nombre FROM liste WHERE id_client=:idcli');
-			}
-			$req->execute( array('idcli'=>$idcli) );
+			$req = $b->prepare('SELECT COUNT(id_article) as nombre FROM liste WHERE id_client=:idcli and id_article=:idart');
+			$req->execute( array('idcli'=>$idcli,'idart'=>$art) );
 			$result=$req->fetch();
 			return $result;
 		}
 		
 		public static function ajoute($art,$cli){
-			$count = liste::countArtById($cli);
-			if($count['nombre'] == 0){
-				$l = new liste();
-				$l->id_article = $art;
-				$l->id_client = $cli;
-				$l->insert();		
-			}else{
-				echo 'déjà dans votre liste';
-			}
+			$l = new liste();
+			$l->id_article = $art;
+			$l->id_client = $cli;
+			$l->insert();	
 		}
 		
 		public static function supprime($art,$cli){

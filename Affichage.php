@@ -291,7 +291,8 @@
 			if((isset($_GET['a']) && $_GET['a'] != 'mesprom') || !isset($_GET['a'])){
 				//Ajout bouton liste
 				if(isset($_SESSION['profil'])){
-					$count = liste::countArtById($_SESSION['profil']['userid']);
+					$count = liste::countArtById($_SESSION['profil']['userid'],$art->id_article);
+					
 					if($count['nombre']  == 0){
 						echo'					<br><a class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button><br></a>';
 					}else{
