@@ -114,7 +114,7 @@
 							</div>
 					</nav>';	
 			}else{
-				echo	'		<div class="col-lg-2  col-md-2 col-sm-2 col-xs-2">
+				echo	'		<div class="col-lg-3  col-md-3 col-sm-3 col-xs-3">
 									<br>
 									<a class="col-lg-6  col-md-6 col-sm-6 col-xs-6" href="PromoSphere.php?a=Connexion"><p class="log">Se connecter</p></a>
 									<a class="col-lg-6 col-md-6 col-sm-6 col-xs-6" href="PromoSphere.php?a=Inscription"><p class="log">S\'inscrire</p></a>
