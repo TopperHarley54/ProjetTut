@@ -62,8 +62,8 @@ function test(){
 							<div class = "col-lg-9 col-md-9 col-sm-9 col-xs-9">
                     
 								<img id="logo" src="inQontrol_qdance.png" style="max-height:75px; max-width:75px; float:left;"/>
-									<h1 class="col-lg-3  col-md-3 col-sm-3 col-xs-3" style="color:red;">Promo Sphère</h1>
-									<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-offset-1 col-lg-7  col-md-7 col-sm-7 col-xs-7" style="margin-top:1%">
+									<h1 class="col-lg-4  col-md-4 col-sm-4 col-xs-4" style="color:red;">Promo Sphère</h1>
+									<div class="col-lg-6  col-md-6 col-sm-6 col-xs-6" style="margin-top:1%">
 										<ul class="nav navbar-nav">';
             echo $menu;
 			
@@ -251,7 +251,7 @@ function test(){
 					if($count['nombre']  == 0){
 						echo'					<br><a class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button><br></a>';
 					}else{
-						echo'					<br><a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button><br></a>';
+						echo'					<br><a class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button><br></a>';
 					}
 				}	
 			}
