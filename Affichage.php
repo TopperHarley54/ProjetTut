@@ -1,13 +1,22 @@
+<script language="JavaScript">
+
+function test(){
+	alert('Attention le prix de la promotion doit être inférieur au prix d\'origine, si ce n\'est pas le cas, votre promotion ne sera pas insérée !!!! ');
+}
+
+</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <?php
+	session_start();
 
     function menu(){
 		
 		if(isset($_SESSION['profil']['com'])){
-			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=Ajoutmag", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier", "PromoSphere?a=mesprom");
+			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=Ajoutmag", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier", "PromoSphere.php?a=mesprom");
 			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Ajouter magasin", "Les promotions", "Liste de shopping", "Mes promotions");
 		}else if(isset($_SESSION['profil']['cli'])){
-			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier", "PromoSphere?a=mesprom");
+			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier", "PromoSphere.php?a=mesprom");
 			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Les promotions", "Liste de shopping", "Mes promotions");
 		}else{
 			$tab_menu_link = array( "PromoSphere.php","PromoSphere.php?a=toutePromo");
@@ -143,27 +152,27 @@
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="Login">Login</label>
                     </div>
-				    <input type="text" name="login" value=""/><br><br>
+				    <input type="text" name="login" value="" maxlength="50" required/><br><br>
 				
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="mdp">Mot de passe</label>
                     </div>
-				    <input type="password" name="mdp" value=""/><br><br>
+				    <input type="password" name="mdp" value="" maxlength="32" required/><br><br>
 				
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="prenom">Prenom</label>
                     </div>
-				    <input type="text" name="prenom" value=""/><br><br>
+				    <input type="text" name="prenom" value="" maxlength="50" required/><br><br>
 					
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="nom">Nom</label>
                     </div>
-				    <input type="text" name="nom" value=""/><br><br>
+				    <input type="text" name="nom" value="" maxlength="50" required/><br><br>
 
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="email">Email</label>
                     </div>
-				    <input type="text" name="email" value=""/><br><br>
+				    <input type="email" name="email" value="" maxlength="50" required/><br><br>
 					
 					<td><b>Type</b></td>  
 					<td><input type=radio value="particulier" name="type" id="particulier" required/>Particulier
@@ -183,42 +192,45 @@
 			echo '  <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black;">	 
 						<div class="row" style="background:#F0EAE7;">
 							<div class="bigbox">
-								<h2 class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">'. $art->nom_article .'</h2>                      
+								<h2 class="col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">'. $art->nom_article .'</h2>                      
 								<div class="row"> <!-- box affichant les informations du produit -->
 									<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-8 col-md-8 col-sm-8 col-xs-8">             
 										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
 											<br><br>
 											<img class="img-circle img-responsive" src="'. $art->photo .'" />
 										</div>  <!-- fin de div contenant img --> 
-										<div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;">
+										<div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-lg-5 col-md-5 col-sm-5 col-xs-5" style="border-style:solid; border-radius: 5px; box-shadow: 5px 5px 15px black; background:#B8ABA5;width: 50%;">
 											<div class="descr-box" style="font-size:inherit; text-shadow:inherit; font-weight:bolder;">
 												<br>
 												<div class="row">
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Prix: <del>'. $art->prix .'</del></div>
-												</div>										
-												<div class="row">
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Prix promo :'. $art->prix_promo .'</div>
-												</div><br>';
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Prix: <del>'. $art->prix .'</del> '. $art->prix_promo .'</div>
+												</div>';
 												
 			$mag = new Magasin();
 			$mag = Magasin::findById($art->id_magasin);
+			
+			echo '								<hr color="grey">';
 			
 			//Indique le nom/enseigne de la personne qui a mis l'article en ligne
 			if($art->id_client != null){
 			    $cli = new Client();
 			    $cli = Client::findById($art->id_client);
-			     echo '							<br> Mise en ligne par <b>'. $cli->login_client .'</b>.';
+			     echo '							Mise en ligne par <b>'. $cli->login_client .'</b>.';
 			}else{
 				if($art->id_magasin != null){
-					echo '						<br> Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
+					echo '						Mise en ligne par <b>☆'. $mag->nom_magasin .'</b>.';
 				}
 			}
 			
+			echo '								<hr color="grey">';
+			
 			//Date de promotion
-			echo'								<br>En promotion du '. $art->datedebut .' au '. $art->datefin.'
-												<div class="row"><br>';
+			echo'								En promotion du '. $art->datedebut .' au '. $art->datefin.'
+												<div class="row">';
                                            
 			if($art->id_magasin != null){
+				echo '								<hr color="grey">';
+			
 				echo ' 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> Ce produit est disponible à '. $mag->nom_magasin .'</div>
 												</div>
 												<div class="row">
@@ -232,45 +244,49 @@
 												</div>';								
 			}
 			
-			//Ajout bouton liste
-			if(isset($_SESSION['profil'])){
-				$count = liste::countArtById($_SESSION['profil']['userid']);
+			if((isset($_GET['a']) && $_GET['a'] != 'mesprom') || !isset($_GET['a'])){
+				//Ajout bouton liste
+				if(isset($_SESSION['profil'])){
+					$count = liste::countArtById($_SESSION['profil']['userid']);
 					if($count['nombre']  == 0){
 						echo'					<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
 					}else{
 						echo'					<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
 					}
-			}	
+				}	
+			}
 			
-			//bouton asuppression et modification
-			if( (isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client) || (isset($_SESSION['profil']['com']) && $_SESSION['profil']['userid'] == $mag->id_commercant)){
+			if(isset($_GET['a']) && $_GET['a'] == 'mesprom'){
 				
-				echo'							<a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
-													<div class="row"><br>
-														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
-													</div>
-												</a>';			
+				//bouton suppression et modification
+				if( (isset($_SESSION['profil']['cli']) && $_SESSION['profil']['userid'] == $art->id_client) || isset($_SESSION['profil']['com'])){
+					
+					echo'							<br><a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
+														<div class="row"><br>
+															<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
+														</div>
+													</a>';			
+					
+					echo'							<div class="row">
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
+															<div>
+															</div>
+														</div>
+													</div><br>';
+				}else{
 				
-				echo'							<div class="row">
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
-														<div>
-															<br>
+					echo'							<div class="row"><br>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+													</div>';
+													
+					echo'							<div class="row"><br>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+															<div>
+																
+															</div>
 														</div>
-													</div>
-												</div>';	
-			}else{
-			
-				echo'							<div class="row"><br>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
-												</div>';
-												
-				echo'							<div class="row"><br>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-														<div>
-															<br>
-														</div>
-													</div>
-												</div>';
+													</div>';
+				}
 			}
 			
 			//description,taille et couleur
@@ -302,6 +318,16 @@
             echo'</div></div>';    
 		}
 		
+		public static function Mesprom(){
+			echo'<div class="row">
+                    <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">';
+			foreach (Article::findByIdAuteur() as $art) {
+				Affichage::Afi($art);
+                echo'<div class="row"><div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10"><hr / style="visibility:hidden;"></div></div>';
+			}
+            echo'</div></div>'; 
+		}
+		
 		public static function AfiLs(){
 			if(isset($_SESSION['profil'])){
 				$temp = 0;
@@ -309,7 +335,7 @@
 					$a = new Article();
 					$a = Article::findById($lis->id_article);
 					Affichage::Afi($a);
-                    
+					$temp++;                    
 				}
 				if($temp == 0){
 					echo '<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-6 col-md-6 col-sm-6 col-xs-6">Votre liste est vide</div>';
@@ -334,7 +360,7 @@
 									<label for="cbarre">code barre</label>
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-									<input type="text" name="cbarre" value=""/>
+									<input type="text" name="cbarre" value="" maxlength="50"/>
 								</div>
 							</div>
 							<br><br>
@@ -344,7 +370,7 @@
 									<label for="narticle">Nom de l\'article</label>
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-									<input type="text" name="narticle" value=""/>
+									<input type="text" name="narticle" value="" maxlength="50" required/>
 								</div>
 							</div>
 							<br><br>
@@ -354,7 +380,7 @@
 									<label for="prix">Prix origine</label>				
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-									<input type="text" name="prix" value=""/>
+									<input type="text" name="prix" value="" maxlength="8" pattern="^[0-9]+(([\.\,])+[0-9]{1,2})?$" required/>
 								</div>
 							</div>
 							<br><br>
@@ -364,7 +390,7 @@
 									<label for="prixprom">Prix promotion</label>
 								</div>
 								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">	
-									<input type="text" name="prixprom" value=""/>
+									<input type="text" name="prixprom" value="" maxlength="8" pattern="^[0-9]+(([\.\,])+[0-9]{1,2})?$" required/>
 								</div>
 							</div>
 							<br><br>
@@ -374,7 +400,7 @@
 									<label for="desc">Description</label>
 								</div>
 								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-									<textarea name="desc" rows="5" cols="50" > </textarea> 
+									<textarea name="desc" rows="5" cols="50" required > </textarea> 
 								</div>
 						</div>
 						<br>
@@ -384,7 +410,7 @@
 								<label for="image">Image produit</label>					
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="file" name="photo"/>
+								<input type="file" name="photo" required/>
 							</div>
 						</div>
 						<br><br>
@@ -394,7 +420,7 @@
 								<label for="taille">Taille disponible</label>			
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="taille" value=""/>
+								<input type="text" name="taille" value="" maxlength="100"/>
 							</div>
 						</div>
 						<br><br>
@@ -404,7 +430,7 @@
 									<label for="couleur">Couleur</label>			
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="couleur" value=""/>
+								<input type="text" name="couleur" value="" maxlength="50"/>
 							</div>
 						</div>		
 						<br><br>
@@ -414,7 +440,7 @@
 								<label for="datedeb">Date début</label>				
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="date" name="datedeb">
+								<input type="date" name="datedeb" required>
 							</div>
 						</div>
 						<br><br>
@@ -424,7 +450,7 @@
 								<label for="datefin">Date fin</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="date" name="datefin">
+								<input type="date" name="datefin" required>
 							</div>
 						</div>
 						<br>';		
@@ -432,7 +458,7 @@
 						
 				echo'		<div class="row">
 								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-									<label for="magasin">Magasin ?</label><br />
+									<label for="magasin" required>Magasin ?</label><br />
 								</div>
 								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 									<select name="magasin" id="magasin">';
@@ -441,8 +467,9 @@
 					echo'				<option value="'.$mag->nom_magasin.'">'. $mag->nom_magasin .'</option>';
 				}
 				
-				echo '				</select>	
-								</div>
+				echo '				</select>';
+			}
+				echo'			</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">				
@@ -453,7 +480,6 @@
 						</div>
 					</form>
 				</div>';
-			}
 		}
 		
 		public static function ModifPromo($art){
@@ -465,7 +491,7 @@
 				<label for="cbarre">code barre</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="cbarre" value="'.$art->code_barre.'"/>
+				<input type="text" name="cbarre" value="'.$art->code_barre.'"  maxlength="50"/>
 				<br><br>
                 </div>
                 </div>
@@ -475,7 +501,7 @@
 				<label for="narticle">Nom de l\'article</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="narticle" value="'.$art->nom_article.'"/>
+				<input type="text" name="narticle" value="'.$art->nom_article.'"  maxlength="50" required/>
 				<br><br>
                 </div>
                 </div>
@@ -485,7 +511,7 @@
 				<label for="prix">Prix origine</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="prix" value="'.$art->prix.'"/>
+				<input type="text" name="prix" value="'.$art->prix.'" maxlength="8" pattern="^[0-9]+(([\.\,])+[0-9]{1,2})?$" required/>
 				<br><br>
                 </div>
                 </div>
@@ -495,7 +521,7 @@
 				<label for="prixprom">Prix promotion</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="prixprom" value="'.$art->prix_promo.'"/>
+				<input type="text" name="prixprom" value="'.$art->prix_promo.'" maxlength="8" pattern="^[0-9]+(([\.\,])+[0-9]{1,2})?$" required/>
 				<br><br>
                 </div>
                 </div>
@@ -505,7 +531,7 @@
 				<label for="desc">Description</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<textarea name="desc" rows="5" cols="50" >'.$art->description.' </textarea> 
+				<textarea name="desc" rows="5" cols="50" required>'.$art->description.' </textarea> 
 				<br>
                 </div>
                 </div>
@@ -515,7 +541,7 @@
 				<label for="image">Image produit</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="file" name="photo">'.$art->photo.' </> 
+				<input type="file" name="photo" required>'.$art->photo.' </> 
 				<br><br>
                 </div>
                 </div>
@@ -525,7 +551,7 @@
 				<label for="taille">Taille disponible</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="taille" value="'.$art->taille_dispo.'"/>
+				<input type="text" name="taille" value="'.$art->taille_dispo.'" maxlength="100"/>
 				<br><br>
                 </div>
                 </div>
@@ -535,7 +561,7 @@
 				<label for="couleur">Couleur</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="couleur" value="'.$art->couleur.'"/>
+				<input type="text" name="couleur" value="'.$art->couleur.'" maxlength="50"/>
 				<br><br>
                 </div>
                 </div>
@@ -545,7 +571,7 @@
 				<label for="datedeb">Date début</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="date" name="datedeb"> '.$art->datedebut.' </>
+				<input type="date" name="datedeb" required> '.$art->datedebut.' />
 				<br><br>
                 </div>
                 </div>
@@ -555,7 +581,7 @@
 				<label for="datefin">Date fin</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="date" name="datefin"> '.$art->datefin.' </>
+				<input type="date" name="datefin" required> '.$art->datefin.' />
 				<br>
                 </div>
                 </div>
@@ -580,7 +606,7 @@
 								<label for="nom">Nom magasin</label>
 								</div>
 								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-									<input type="text" name="nom" id="nom" /><br />
+									<input type="text" name="nom" id="nom" maxlength="100" required/><br />
 								</div>
 							</div>
 						<br>
@@ -590,7 +616,7 @@
 								<label for="num">Numero</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="number" name="num" id="num" /><br />
+								<input type="number" name="num" id="num" maxlength="5" required/><br />
 							</div>
 						</div>
 						<br>
@@ -600,7 +626,7 @@
 								<label for="rue">Rue</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="rue" id="rue" /><br />
+								<input type="text" name="rue" id="rue"  maxlength="100" required/><br />
 							</div>
 						</div>
 						<br>
@@ -610,7 +636,7 @@
 								<label for="ville">Ville</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="ville" id="ville" /><br />
+								<input type="text" name="ville" id="ville" maxlength="50" required/><br />
 							</div>
 						</div>
 						<br>
@@ -620,7 +646,7 @@
 								<label for="cd">Code postal</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="cd" id="cd" /><br />
+								<input type="text" name="cd" id="cd" maxlength="5" pattern="^[0-9]{5,5}$" required/><br />
 							</div>
 						</div>
 						<br>
@@ -630,7 +656,7 @@
 								<label for="desc">Description</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<textarea name="desc" rows="5" cols="50" > Description </textarea> 
+								<textarea name="desc" rows="5" cols="50"  required> Description </textarea> 
 							</div>
 						</div>
 						<br>
@@ -640,7 +666,7 @@
 								<label for="tel">Tel</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="number" name="tel" id="tel" /><br />
+								<input type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
 							</div>
 						</div>
 						<br>

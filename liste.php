@@ -40,7 +40,7 @@
 		
 		public static function countArtById($idcli){
 			$b = Base::getConnection();
-			$req = $b->prepare('SELECT COUNT(id_article) as nombre FROM liste WHERE id_client=:idcli') or die(print_r($bdd->errorInfo())) ;
+			$req = $b->prepare('SELECT COUNT(id_article) as nombre FROM liste WHERE id_client=:idcli');
 			$req->execute( array('idcli'=>$idcli) );
 			$result=$req->fetch();
 			return $result;

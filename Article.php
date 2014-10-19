@@ -1,5 +1,4 @@
 <?php
-
 	include_once "Base.php";
 	
 	class article {
@@ -255,10 +254,22 @@
 			return $mag;
 		}
 		
+		public static function findByIdAuteur(){
+			$b = Base::getConnection();
+			if(isset($_SESSION['profil']['cli'])){
+				$query = $b->prepare("select * from article where id_client = :id") ;
+			}else if(isset($_SESSION['profil']['com'])){
+				$query = $b->prepare("select * from article where id_magasin = :id") ;
+			}
+			$query->execute(array('id'=>$_SESSION['profil']['userid']));
+			$result = $query->fetchAll(PDO::FETCH_CLASS,"article");
+			return $result;
+		}
+		
 		public static function findAll() {
 		
-			$c = Base::getConnection();
-			$query = $c->prepare("select * from article order by id_article DESC") ;
+			$b = Base::getConnection();
+			$query = $b->prepare("select * from article order by id_article DESC") ;
 			$dbres = $query->execute();
 			$result = $query->fetchAll(PDO::FETCH_CLASS,"article");
 			return $result;

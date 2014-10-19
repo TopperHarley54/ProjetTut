@@ -31,4 +31,6 @@
 	
 	$m->id_commercant = $_SESSION['profil']['userid'];
 	$m->insert();
+	
+	header('Location: PromoSphere.php?a=toutePromo');
 ?>
