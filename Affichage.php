@@ -148,7 +148,7 @@
       public static function Description(){
      echo ' <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">
               <p id="descHead"> Qu\'est ce que Promosphère ?:</p>
-              <p class="descCorp">Promosphère est site sur lequel chaque utilisateur peut recenser des promotions et ou retrouver constatées dans le magasin ou il se trouve.</p>
+              <p class="descCorp">Promosphère est un site sur lequel chaque utilisateur peut recenser des promotions et/ou retrouver des promotions constatées dans le magasin ou il se trouve.</p>
               <p class="descCorp">Il est également possible de créer une liste d\'achat à effectuer nommé "Liste de shopping" afin que vous puissiez garder en mémoire les articles qui vous ont intéressés...</p> 
             <hr style="border-color: black; box-shadow: 0px 0px 3px black; border-style: groove; border-radius: 6px; border-bottom-width: 2px;"></div><br>';
     }
