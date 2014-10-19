@@ -128,7 +128,10 @@
 		public static function Accueil(){
 
       echo ' <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-      
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> Qu'est ce que Promosphère ?: <br>
+        Promosphère est site sur lequel chaque utilisateur peut recenser des promotions et/ou retrouver constatées dans le magasin ou il se trouve.
+        Il est également possible de créer une liste d'achat à effectuer nommé "Liste de shopping" afin que vous puissiez garder en mémoire les articles qui vous ont intéressés...   
+      </div>
       <div id="lastProd">Les derniers produits signalés...</div><br></div><div>';
 			Affichage::AfiAll();
 			
