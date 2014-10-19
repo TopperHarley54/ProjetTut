@@ -1,3 +1,11 @@
+<script language="JavaScript">
+
+function test(){
+	alert('Attention le prix de la promotion doit être inférieur au prix d\'origine, si ce n\'est pas le cas, votre promotion ne sera pas insérée !!!! ');
+}
+
+</script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <?php
 	session_start();
@@ -144,27 +152,27 @@
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="Login">Login</label>
                     </div>
-				    <input type="text" name="login" value=""/><br><br>
+				    <input type="text" name="login" value="" maxlength="50" required/><br><br>
 				
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="mdp">Mot de passe</label>
                     </div>
-				    <input type="password" name="mdp" value=""/><br><br>
+				    <input type="password" name="mdp" value="" maxlength="32" required/><br><br>
 				
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="prenom">Prenom</label>
                     </div>
-				    <input type="text" name="prenom" value=""/><br><br>
+				    <input type="text" name="prenom" value="" maxlength="50" required/><br><br>
 					
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="nom">Nom</label>
                     </div>
-				    <input type="text" name="nom" value=""/><br><br>
+				    <input type="text" name="nom" value="" maxlength="50" required/><br><br>
 
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="email">Email</label>
                     </div>
-				    <input type="text" name="email" value=""/><br><br>
+				    <input type="email" name="email" value="" maxlength="50" required/><br><br>
 					
 					<td><b>Type</b></td>  
 					<td><input type=radio value="particulier" name="type" id="particulier" required/>Particulier
@@ -352,7 +360,7 @@
 									<label for="cbarre">code barre</label>
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-									<input type="text" name="cbarre" value=""/>
+									<input type="text" name="cbarre" value="" maxlength="50"/>
 								</div>
 							</div>
 							<br><br>
@@ -362,7 +370,7 @@
 									<label for="narticle">Nom de l\'article</label>
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-									<input type="text" name="narticle" value=""/>
+									<input type="text" name="narticle" value="" maxlength="50" required/>
 								</div>
 							</div>
 							<br><br>
@@ -372,7 +380,7 @@
 									<label for="prix">Prix origine</label>				
 								</div>
 								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-									<input type="text" name="prix" value=""/>
+									<input type="text" name="prix" value="" maxlength="8" pattern="^[0-9]+(([\.\,])+[0-9]{1,2})?$" required/>
 								</div>
 							</div>
 							<br><br>
@@ -382,7 +390,7 @@
 									<label for="prixprom">Prix promotion</label>
 								</div>
 								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">	
-									<input type="text" name="prixprom" value=""/>
+									<input type="text" name="prixprom" value="" maxlength="8" pattern="^[0-9]+(([\.\,])+[0-9]{1,2})?$" required/>
 								</div>
 							</div>
 							<br><br>
@@ -392,7 +400,7 @@
 									<label for="desc">Description</label>
 								</div>
 								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-									<textarea name="desc" rows="5" cols="50" > </textarea> 
+									<textarea name="desc" rows="5" cols="50" required > </textarea> 
 								</div>
 						</div>
 						<br>
@@ -402,7 +410,7 @@
 								<label for="image">Image produit</label>					
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="file" name="photo"/>
+								<input type="file" name="photo" required/>
 							</div>
 						</div>
 						<br><br>
@@ -412,7 +420,7 @@
 								<label for="taille">Taille disponible</label>			
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="taille" value=""/>
+								<input type="text" name="taille" value="" maxlength="100"/>
 							</div>
 						</div>
 						<br><br>
@@ -422,7 +430,7 @@
 									<label for="couleur">Couleur</label>			
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="couleur" value=""/>
+								<input type="text" name="couleur" value="" maxlength="50"/>
 							</div>
 						</div>		
 						<br><br>
@@ -432,7 +440,7 @@
 								<label for="datedeb">Date début</label>				
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="date" name="datedeb">
+								<input type="date" name="datedeb" required>
 							</div>
 						</div>
 						<br><br>
@@ -442,7 +450,7 @@
 								<label for="datefin">Date fin</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="date" name="datefin">
+								<input type="date" name="datefin" required>
 							</div>
 						</div>
 						<br>';		
@@ -450,7 +458,7 @@
 						
 				echo'		<div class="row">
 								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
-									<label for="magasin">Magasin ?</label><br />
+									<label for="magasin" required>Magasin ?</label><br />
 								</div>
 								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 									<select name="magasin" id="magasin">';
@@ -459,8 +467,9 @@
 					echo'				<option value="'.$mag->nom_magasin.'">'. $mag->nom_magasin .'</option>';
 				}
 				
-				echo '				</select>	
-								</div>
+				echo '				</select>';
+			}
+				echo'			</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">				
@@ -471,7 +480,6 @@
 						</div>
 					</form>
 				</div>';
-			}
 		}
 		
 		public static function ModifPromo($art){
@@ -483,7 +491,7 @@
 				<label for="cbarre">code barre</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="cbarre" value="'.$art->code_barre.'"/>
+				<input type="text" name="cbarre" value="'.$art->code_barre.'"  maxlength="50"/>
 				<br><br>
                 </div>
                 </div>
@@ -493,7 +501,7 @@
 				<label for="narticle">Nom de l\'article</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="narticle" value="'.$art->nom_article.'"/>
+				<input type="text" name="narticle" value="'.$art->nom_article.'"  maxlength="50" required/>
 				<br><br>
                 </div>
                 </div>
@@ -503,7 +511,7 @@
 				<label for="prix">Prix origine</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="prix" value="'.$art->prix.'"/>
+				<input type="text" name="prix" value="'.$art->prix.'" maxlength="8" pattern="^[0-9]+(([\.\,])+[0-9]{1,2})?$" required/>
 				<br><br>
                 </div>
                 </div>
@@ -513,7 +521,7 @@
 				<label for="prixprom">Prix promotion</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="prixprom" value="'.$art->prix_promo.'"/>
+				<input type="text" name="prixprom" value="'.$art->prix_promo.'" maxlength="8" pattern="^[0-9]+(([\.\,])+[0-9]{1,2})?$" required/>
 				<br><br>
                 </div>
                 </div>
@@ -523,7 +531,7 @@
 				<label for="desc">Description</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<textarea name="desc" rows="5" cols="50" >'.$art->description.' </textarea> 
+				<textarea name="desc" rows="5" cols="50" required>'.$art->description.' </textarea> 
 				<br>
                 </div>
                 </div>
@@ -533,7 +541,7 @@
 				<label for="image">Image produit</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="file" name="photo">'.$art->photo.' </> 
+				<input type="file" name="photo" required>'.$art->photo.' </> 
 				<br><br>
                 </div>
                 </div>
@@ -543,7 +551,7 @@
 				<label for="taille">Taille disponible</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="taille" value="'.$art->taille_dispo.'"/>
+				<input type="text" name="taille" value="'.$art->taille_dispo.'" maxlength="100"/>
 				<br><br>
                 </div>
                 </div>
@@ -553,7 +561,7 @@
 				<label for="couleur">Couleur</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="text" name="couleur" value="'.$art->couleur.'"/>
+				<input type="text" name="couleur" value="'.$art->couleur.'" maxlength="50"/>
 				<br><br>
                 </div>
                 </div>
@@ -563,7 +571,7 @@
 				<label for="datedeb">Date début</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="date" name="datedeb"> '.$art->datedebut.' </>
+				<input type="date" name="datedeb" required> '.$art->datedebut.' />
 				<br><br>
                 </div>
                 </div>
@@ -573,7 +581,7 @@
 				<label for="datefin">Date fin</label>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-				<input type="date" name="datefin"> '.$art->datefin.' </>
+				<input type="date" name="datefin" required> '.$art->datefin.' />
 				<br>
                 </div>
                 </div>
@@ -598,7 +606,7 @@
 								<label for="nom">Nom magasin</label>
 								</div>
 								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-									<input type="text" name="nom" id="nom" /><br />
+									<input type="text" name="nom" id="nom" maxlength="100" required/><br />
 								</div>
 							</div>
 						<br>
@@ -608,7 +616,7 @@
 								<label for="num">Numero</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="number" name="num" id="num" /><br />
+								<input type="number" name="num" id="num" maxlength="5" required/><br />
 							</div>
 						</div>
 						<br>
@@ -618,7 +626,7 @@
 								<label for="rue">Rue</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="rue" id="rue" /><br />
+								<input type="text" name="rue" id="rue"  maxlength="100" required/><br />
 							</div>
 						</div>
 						<br>
@@ -628,7 +636,7 @@
 								<label for="ville">Ville</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="ville" id="ville" /><br />
+								<input type="text" name="ville" id="ville" maxlength="50" required/><br />
 							</div>
 						</div>
 						<br>
@@ -638,7 +646,7 @@
 								<label for="cd">Code postal</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="text" name="cd" id="cd" /><br />
+								<input type="text" name="cd" id="cd" maxlength="5" pattern="^[0-9]{5,5}$" required/><br />
 							</div>
 						</div>
 						<br>
@@ -648,7 +656,7 @@
 								<label for="desc">Description</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<textarea name="desc" rows="5" cols="50" > Description </textarea> 
+								<textarea name="desc" rows="5" cols="50"  required> Description </textarea> 
 							</div>
 						</div>
 						<br>
@@ -658,7 +666,7 @@
 								<label for="tel">Tel</label>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="number" name="tel" id="tel" /><br />
+								<input type="tel" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" required><br />
 							</div>
 						</div>
 						<br>
