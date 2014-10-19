@@ -128,6 +128,7 @@
 		public static function Accueil(){
 
       echo ' <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+      
       <div id="lastProd">Les derniers produits signalés...</div><br></div><div>';
 			Affichage::AfiAll();
 			
@@ -297,12 +298,12 @@
 					
 					echo'							<br><a href=PromoSphere.php?a=modifProm&idart='. $art->id_article .'>
 														<div class="row"><br>
-															<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><button class="btn btn-primary">Modifier la promotion</button></div>
+															<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4"><button class="btn btn-primary">Modifier la promotion</button></div>
 														</div>
 													</a>';			
 					
-					echo'							<div class="row">
-														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">Ce bon plan n\'existe plus ? <a href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
+					echo'							<div class="row"><br>
+														<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">Ce bon plan n\'existe plus ? <br><a class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2" href="PromoSphere.php?a=supProm&idart='. $art->id_article .'"><button class="btn btn-primary">Supprimer</button> </a>
 															<div>
 															</div>
 														</div>
