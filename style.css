@@ -4,6 +4,19 @@
     
 }
 
+.col-lg-offset-4 {
+   /* margin-left: 33.33333333%; */
+    margin-left: 25%;
+  }
+
+@media (max-width: 480px) and (orientation: landscape) {
+  .navbar-fixed-top .navbar-collapse,
+  .navbar-fixed-bottom .navbar-collapse {
+    /*max-height: 200px;*/
+    max-height: 800px;
+  }
+}
+
 .descr-box{
     font-family:'Trebuchet MS';
     font-size:16px;
