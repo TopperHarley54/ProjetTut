@@ -1,8 +1,41 @@
-<script language="JavaScript">
+<script type='text/javascript'>
 
-function test(){
-	alert('Attention le prix de la promotion doit être inférieur au prix d\'origine, si ce n\'est pas le cas, votre promotion ne sera pas insérée !!!! ');
-}
+	function test(){
+		alert('Attention le prix de la promotion doit être inférieur au prix d\'origine, si ce n\'est pas le cas, votre promotion ne sera pas insérée !!!! ');
+	} 
+    function writediv(texte) {
+      document.getElementById('pseudobox').innerHTML = texte;
+    }
+ 
+    function verifPseudo(pseudo) {
+		if (pseudo != '') {
+			if (texte = file('./verif.php?pseudo='+escape(pseudo))) { 
+				if (texte == 1){
+					writediv('<span style="color:#cc0000"><b>'+pseudo+' :</b> ce pseudo est deja pris</span>');
+				}else if(texte == 0){
+					writediv(texte);
+					writediv('<span style="color:#1A7917"><b>'+pseudo+' :</b> ce pseudo est libre</span>');
+				}else{
+					writediv(texte);
+				}
+			}
+		}
+	}
+ 
+    function file(fichier) {
+      if (window.XMLHttpRequest) // FIREFOX
+        xhr_object = new XMLHttpRequest();
+      else if(window.ActiveXObject) // IE
+        xhr_object = new ActiveXObject("Microsoft.XMLHTTP" );
+      else
+        return(false);
+      xhr_object.open("GET", fichier, false);
+      xhr_object.send(null);
+      if (xhr_object.readyState == 4) 
+        return xhr_object.responseText;
+      else 
+        return false;
+    }
 
 </script>
 
@@ -152,7 +185,8 @@ function test(){
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="Login">Login</label>
                     </div>
-				    <input type="text" name="login" value="" maxlength="50" required/><br><br>
+				    <input type="text" name="pseudo" value="" maxlength="50" onKeyUp="verifPseudo(this.value)" required/><br><br>
+					<div id="pseudobox"></div>
 				
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				        <label for="mdp">Mot de passe</label>
