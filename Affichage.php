@@ -240,7 +240,7 @@ function test(){
 				echo ' 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 												</div>
 												<div class="row">
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><br><br></div>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 												</div>';								
 			}
 			
@@ -249,9 +249,9 @@ function test(){
 				if(isset($_SESSION['profil'])){
 					$count = liste::countArtById($_SESSION['profil']['userid']);
 					if($count['nombre']  == 0){
-						echo'					<a href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button></a>';
+						echo'					<br><a class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" href="PromoSphere.php?a=addLs&idart='. $art->id_article .'"><button class="btn btn-primary">Ajouter à la liste</button><br></a>';
 					}else{
-						echo'					<a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button></a>';
+						echo'					<br><a href="PromoSphere.php?a=supLs&idart='. $art->id_article .'"><button class="btn btn-primary">Retirer de la liste</button><br></a>';
 					}
 				}	
 			}
