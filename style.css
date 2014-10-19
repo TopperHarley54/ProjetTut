@@ -195,7 +195,7 @@ hr{
 }
 
 
-@media (max-width:360px){
+@media handheld {
 #descHead {
     font-weight:bolder;
     text-decoration:underline;
