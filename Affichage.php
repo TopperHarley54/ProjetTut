@@ -54,7 +54,7 @@
                     
 								<img id="logo" src="inQontrol_qdance.png" style="max-height:75px; max-width:75px; float:left;"/>
 									<h1 class="col-lg-3  col-md-3 col-sm-3 col-xs-3" style="color:red;">Promo Sphère</h1>
-									<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-offset-1 col-lg-11  col-md-7 col-sm-7 col-xs-7" style="margin-top:1%">
+									<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-offset-1 col-lg-7  col-md-7 col-sm-7 col-xs-7" style="margin-top:1%">
 										<ul class="nav navbar-nav">';
             echo $menu;
 			
