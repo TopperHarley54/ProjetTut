@@ -164,12 +164,12 @@
 					            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                     <label for="Login">Login</label>
                                 </div>
-					            <input type="text" name="login" value=""/><br><br>
+					            <input type="text" name="login" value="" required/><br><br>
 
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
 					                <label for="mdp">Mot de passe</label>
                                 </div>    
-					            <input type="password" name="mdp" value=""/><br><br>
+					            <input type="password" name="mdp" value="" required/><br><br>
 
 					            <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4"><input type="submit" value="Se connecter"/ class="btn btn-primary"></div>
                             </div>    
