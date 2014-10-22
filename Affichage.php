@@ -46,8 +46,8 @@
     function menu(){
 		
 		if(isset($_SESSION['profil']['com'])){
-			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=Ajoutmag", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier", "PromoSphere.php?a=mesprom");
-			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Ajouter magasin", "Les promotions", "Liste de shopping", "Mes promotions");
+			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=Ajoutmag", "PromoSphere.php?a=toutePromo","PromoSphere.php?a=mesprom");
+			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Ajouter magasin", "Les promotions", "Mes promotions");
 		}else if(isset($_SESSION['profil']['cli'])){
 			$tab_menu_link = array( "PromoSphere.php", "PromoSphere.php?a=SignalerProm", "PromoSphere.php?a=toutePromo", "PromoSphere.php?a=AfficherPanier", "PromoSphere.php?a=mesprom");
 			$tab_menu_txt = array( "Accueil", "Signaler une promotion", "Les promotions", "Liste de shopping", "Mes promotions");
@@ -266,6 +266,12 @@
 				}
 			}
 			
+			
+			if($art->magasin != null){
+				echo '							<hr color="grey">';
+				echo'							Disponible a '.$art->magasin.'('.$art->ville.')';
+			}
+			
 			echo '								<hr color="grey">';
 			
 			//Date de promotion
@@ -287,6 +293,7 @@
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 												</div>';								
 			}
+			
 			
 			if((isset($_GET['a']) && $_GET['a'] != 'mesprom') || !isset($_GET['a'])){
 				//Ajout bouton liste
@@ -332,7 +339,7 @@
 														</div>
 													</div>';
 				}
-			}
+			}			
 			
 			//description,taille et couleur
 			echo'							</div>
@@ -421,6 +428,26 @@
 								</div>
 							</div>
 							<br><br>
+							
+							<div class="row">
+								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<label for="nommagasin">Nom du Magasin</label>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+									<input type="text" name="nommagasin" value="" maxlength="50" required/>
+								</div>
+							</div>
+							<br><br>
+							
+							<div class="row">
+								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
+									<label for="ville">Ville</label>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+									<input type="text" name="ville" value="" maxlength="50" required/>
+								</div>
+							</div>
+							<br><br>
 				
 							<div class="row">
 								<div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-1 col-xs-1">
@@ -457,7 +484,7 @@
 								<label for="image">Image produit</label>					
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<input type="file" name="photo" required/>
+								<input type="file" name="photo"/>
 							</div>
 						</div>
 						<br><br>

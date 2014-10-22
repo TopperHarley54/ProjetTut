@@ -23,7 +23,7 @@
 		if(isset($_POST['desc'])){
 			$a->description = str_replace("'","\'",$_POST['desc']);
 		}
-		if(isset($_FILES['photo']['name'])){
+		if($_FILES['photo']['name'] != null){
 					$dossier = 'image/';
 					
 					$info = new SplFileInfo($_FILES['photo']['name']);
@@ -38,6 +38,8 @@
 					}else{ 
 						echo 'Echec de l\'upload !';
 					}
+		}else{
+			$a->photo = "image/0.jpg";
 		}
 		if(isset($_POST['taille'])){
 			$a->taille_dispo = str_replace("'","\'",$_POST['taille']);
@@ -57,6 +59,12 @@
 		if(isset($_SESSION['profil']['com'])){
 			$m = Magasin::findByNom($_POST['magasin']);
 			$a->id_magasin = $m->id_magasin;
+		}
+		if(isset($_POST['ville'])){
+			$a->ville =  str_replace("'","\'",$_POST['ville']);
+		}
+		if(isset($_POST['nommagasin'])){
+			$a->magasin = str_replace("'","\'",$_POST['nommagasin']);
 		}
 		
 		$a->insert();

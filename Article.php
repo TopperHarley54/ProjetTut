@@ -29,6 +29,10 @@
 		
 		private $id_magasin;
 		
+		private $ville;
+		
+		private $magasin;
+		
 		public function __construct() {
 		
   		}
@@ -50,7 +54,7 @@
 			if(isset($_SESSION['profil']['com'])){
 				$query = "INSERT INTO article(code_barre, nom_article, prix, prix_promo, description, photo, taille_dispo, couleur, datedebut,datefin,id_magasin) VALUES ('$this->code_barre','$this->nom_article',$this->prix,$this->prix_promo,'$this->description','$this->photo','$this->taille_dispo','$this->couleur','$this->datedebut','$this->datefin',$this->id_magasin)";
 			}else{
-				$query = "INSERT INTO article(code_barre, nom_article, prix, prix_promo, description, photo, taille_dispo, couleur, datedebut,datefin,id_client) VALUES ('$this->code_barre','$this->nom_article',$this->prix,$this->prix_promo,'$this->description','$this->photo','$this->taille_dispo','$this->couleur','$this->datedebut','$this->datefin',$this->id_client)";
+				$query = "INSERT INTO article(code_barre, nom_article, prix, prix_promo, description, photo, taille_dispo, couleur, datedebut,datefin,id_client,ville,magasin) VALUES ('$this->code_barre','$this->nom_article',$this->prix,$this->prix_promo,'$this->description','$this->photo','$this->taille_dispo','$this->couleur','$this->datedebut','$this->datefin',$this->id_client,'$this->ville','$this->magasin')";
 			}
 			$res = $b->query($query);
 			echo $query;
@@ -104,6 +108,8 @@
 			$art->datefin = $tab['datefin'];
 			$art->id_magasin = $tab['id_magasin'];
 			$art->id_client = $tab['id_client'];
+			$art->ville = $tab['ville'];
+			$art->magasin = $tab['magasin'];
 			
 			return $art;
 		}
@@ -134,6 +140,9 @@
 			$art->datefin = $tab['datefin'];
 			$art->id_magasin = $tab['id_magasin'];
 			$art->id_client = $tab['id_client'];
+			$art->ville = $tab['ville'];
+			$art->magasin = $tab['magasin'];
+			
 			return $mag;
 		}
 		
@@ -163,6 +172,9 @@
 			$art->datefin = $tab['datefin'];
 			$art->id_magasin = $tab['id_magasin'];
 			$art->id_client = $tab['id_client'];
+			$art->ville = $tab['ville'];
+			$art->magasin = $tab['magasin'];
+			
 			return $mag;
 		}
 		
@@ -192,6 +204,9 @@
 			$art->datefin = $tab['datefin'];
 			$art->id_magasin = $tab['id_magasin'];
 			$art->id_client = $tab['id_client'];
+			$art->ville = $tab['ville'];
+			$art->magasin = $tab['magasin'];
+			
 			return $mag;
 		}
 		
@@ -221,6 +236,8 @@
 			$art->datefin = $tab['datefin'];
 			$art->id_magasin = $tab['id_magasin'];
 			$art->id_client = $tab['id_client'];
+			$art->ville = $tab['ville'];
+			$art->magasin = $tab['magasin'];
 			
 			return $mag;
 		}
@@ -251,6 +268,9 @@
 			$art->datefin = $tab['datefin'];
 			$art->id_magasin = $tab['id_magasin'];
 			$art->id_client = $tab['id_client'];
+			$art->ville = $tab['ville'];
+			$art->magasin = $tab['magasin'];
+			
 			return $mag;
 		}
 		
@@ -331,7 +351,10 @@
 			$art->datedebut = $tab['datedebut'];
 			$art->datefin = $tab['datefin'];
 			$art->id_magasin = $tab['id_magasin'];
-			$art->id_client = $tab['id_client'];	
+			$art->id_client = $tab['id_client'];
+			$art->ville = $tab['ville'];
+			$art->magasin = $tab['magasin'];
+			
 			return $art;
 		}
 	}
