@@ -54,7 +54,7 @@ public static function callAction(){
 			break;
             
         case("addLs"):
-			if(isset($_SESSION['profil']['com'])){
+			if(isset($_SESSION['profil']['cli'])){
 				Affichage::AjoutListe($_GET['idart']);
 				header('Location: PromoSphere.php?a=AfficherPanier');
 			}else{

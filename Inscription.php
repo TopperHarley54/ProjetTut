@@ -29,7 +29,7 @@
 				
 		$user->insert();
 				
-		header('Location: PromoSphere.php?a=Connexion');	
+		
 	}
-	
+	header('Location: PromoSphere.php?a=Connexion');	
 ?>

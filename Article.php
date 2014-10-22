@@ -67,7 +67,7 @@
 			$save_query = "update article set code_barre=:code, nom_article=:nom, prix=:prix, prix_promo=:pripromo, description=:descri, photo=:phot, taille_dispo=:taille, couleur=:coulwhere id_article=:id_art";
 			try{
 				$stmt = $b->prepare($save_query);
-				$a = $stmt->execute(array(':code'=>$code,':nom'=>$nom, ':prix'=>$prix, ':pripromo'=>$pripromo, ':description'=>$descri, ':phot'=>$phot, ':taille'=>$taille, ':coul'=>$coul, ':idstat'=>$idstat, ':id_art'=>$this->id_article));
+				$a = $stmt->execute(array(':code'=>$code,':nom'=>$nom, ':prix'=>$prix, ':prixpromo'=>$pripromo, ':description'=>$descri, ':phot'=>$phot, ':taille'=>$taille, ':coul'=>$coul, ':idstat'=>$idstat, ':id_art'=>$this->id_article));
 				return $a;
 			}catch (PDOException $e){
 				return null;
