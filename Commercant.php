@@ -86,6 +86,7 @@
 		public static function findByLogin($log) {
 			$b = Base::getConnection();
 			$query = "Select * from commercant where login_commercant = :login";
+			echo $query;
 			try{
 				$stmt = $b->prepare($query);
 				$a= $stmt->execute(array(':login'=>$log));
