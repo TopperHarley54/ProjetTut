@@ -35,6 +35,7 @@
 		public function insert() {
 			$b = Base::getConnection();
 			$query = "INSERT INTO client values ('', '$this->login_client', '$this->mdp_client', '$this->nom_client', '$this->prenom_client', '$this->mail_client')";
+			echo $query;
 			$res = $b->query($query);
 			$lastid = $b->lastInsertId();
 			$this->id_client = $lastid;
